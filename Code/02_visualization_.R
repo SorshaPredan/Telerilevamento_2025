@@ -3,8 +3,11 @@
 # install.packages("devtools")
 library(devtools)
 install_github("ducciorocchini/imageRy")
+# install.packages("viridis")
 
-
+library(terra)
+library(imageRy)
+library(viridis)
 
 # Listing file
 im.list()
@@ -121,17 +124,6 @@ sentdol=im.import("sentinel.dolomites")
 # How to import several sets altoghether
 pairs(sentdol)
 
-# RGB plotting
-# sent[[1]] blue
-# sent[[2]] green
-# sent[[3]] red
-# sent[[4]] NIR
-
-dev.off()
-im.plotRGB(sentstack, r=3, g=2, b=1) # natural color image
-im.plotRGB(sentstack, r=4, g=3, b=2) # false color image
-im.plotRGB(sentstack, r=3, g=4, b=2) # false color image
-im.plotRGB(sentstack, r=3, g=2, b=4) # false color image
 
 # Viridis
 install.packages("viridis")
@@ -140,6 +132,37 @@ library(viridis)
 plot(sentdol, col=viridis(100))
 plot(sentdol, col=mako(100))
 plot(sentdol, col=magma(100))
+
+# Viridis colors:
+# https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+
+# Layers
+# 1 - band 2 (blue)
+# 2 - band 3 (green)
+# 3 - band 4 (red)
+# 4 - band 8 (NIR)
+
+# Natural colors
+im.plotRGB(sentdol,r=3, g=2, b=1)
+
+# False colors
+im.plotRGB(sentdol, r=4, g=3, b=2)
+im.plotRGB(sentdol, r=3, g=4, b=2) 
+im.plotRGB(sentdol, r=3, g=4, b=1) 
+
+im.multiframe(1,2)
+im.plotRGB(sentdol, r=3, g=4, b=2)
+im.plotRGB(sentdol, r=3, g=4, b=1)
+
+dev.off()
+im.plotRGB(sentdol, r=3, g=2, b=4)
+
+# RGB plotting
+# sent[[1]] blue
+# sent[[2]] green
+# sent[[3]] red
+# sent[[4]] NIR
+
 
 
 
