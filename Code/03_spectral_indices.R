@@ -142,18 +142,18 @@ ndvi2006 = (mato2006[[1]] - mato2006[[2]]) / (mato2006[[1]] + mato2006[[2]])
 plot(ndvi2006)
 
 # Functions from imageRy
-dvi1992auto = im.dvi(mato1992, 1, 2)
+dvi1992auto <- im.dvi(mato1992, 1, 2)
 dev.off()
 plot(dvi1992auto)
 
-dvi2006auto = im.dvi(mato2006, 1, 2)
+dvi2006auto <- im.dvi(mato2006, 1, 2)
 plot(dvi2006auto)
 
-ndvi1992auto = im.ndvi(mato1992, 1, 2)
+ndvi1992auto <- im.ndvi(mato1992, 1, 2)
 dev.off()
 plot(ndvi1992auto)
 
-ndvi2006auto = im.ndvi(mato2006, 1, 2)
+ndvi2006auto <- im.ndvi(mato2006, 1, 2)
 dev.off()
 plot(ndvi2006auto)
 
