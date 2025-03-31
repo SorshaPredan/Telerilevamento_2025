@@ -68,23 +68,23 @@ plot(b3)
 plot(b4)
 plot(b8)
 
-cl=colorRampPalette(c("black","light grey"))(100)
+cl<-colorRampPalette(c("black","light grey"))(100)
 plot(b2, col=cl)
 plot(b3, col=cl)
 plot(b4, col=cl)
 plot(b8, col=cl)
 
-cl=colorRampPalette(c("black","light grey"))(2)
+cl<-colorRampPalette(c("black","light grey"))(2)
 plot(b2, col=cl)
 plot(b3, col=cl)
 plot(b4, col=cl)
 plot(b8, col=cl)
 
 # Sent
-sent=c(b2,b3,b4,b8)
+sent<-c(b2,b3,b4,b8)
 plot(sent, col=cl)
 
-names(sent)=c("b2ble","b3green","b4red","b8NIR")
+names(sent)<-c("b2ble","b3green","b4red","b8NIR")
 sent
 
 # Plotting one layer
@@ -119,7 +119,7 @@ plot(b8, col=cln)
 
 
 # Importing several bands altoghether
-sentdol=im.import("sentinel.dolomites")
+sentdol<-im.import("sentinel.dolomites")
 
 # How to import several sets altoghether
 pairs(sentdol)
