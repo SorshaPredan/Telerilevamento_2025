@@ -80,9 +80,6 @@ plot(ndvi)
 plot(ndvi[[2]],ndvi[[3]])
 abline(0,1,col="red")
 
-
-
-# IN PIU NON ANCORA FATTO
 pairs(ndvi)
 
 plot(ndvi[[1]], ndvi[[2]])
