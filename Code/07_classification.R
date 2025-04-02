@@ -1,10 +1,81 @@
-# classifying data
+# R code classifying images
 
+# install.packages("patchwork")
 library(terra)
 library(imageRy)
 library(ggplot2) # package needed for the final graph (histograms)
 library(patchwork) # package needed to couple graphs
 
+im.list()
+
+mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+mato1992 <- flip(mato1992)
+plot(mato1992)
+
+mato2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")
+mato2006 <- flip(mato2006)
+plot(mato2006)
+
+im.classify
+mato1992c = im.classify(mato1992, num_clusters=2)
+# class 1 = human (violet)
+# class 2 = forest (yellow)
+
+mato2006c = im.classify(mato2006, num_clusters=2)
+# class 1 = forest (yellow)
+# class 2 = human (violet)
+
+# Frequency
+f1992 <- freq(mato1992c)
+tot1992 <- ncell(mato1992c)
+prop1992 <- f1992 / tot1992
+perc1992 <- prop1992 * 100
+
+# percentages 1992:
+# human = 83% 
+# forest = 17%
+
+perc1992 <- freq(mato1992c) * 100 / ncell(mato1992c)
+
+# Exercise: calculate the percentages for 2006
+f2006 <- freq(mato2006c)
+tot2006 <- ncell(mato2006c)
+prop2006 <- f2006 / tot2006
+perc2006 <- prop2006 * 100
+perc2006 <- freq(mato2006c) * 100 / ncell(mato2006c)
+
+# percentages 2006:
+# human = 55% 
+# forest = 45%
+
+# Istogramm
+class <- c("Forest", "Human")
+y1992 <- c(17,83)
+y2006 <- c(45,55)
+tabout <- data.frame(class, y1992, y2006)
+tabout
+
+library(ggplot2)
+ggplot(tabout, aes(x=class, y=y1992, color=class)) + 
+ geom_bar(state="identity", fill="white")
+ggplot(tabout, aes(x=class, y=y2006, color=class)) + 
+ geom_bar(state="identity", fill="white")
+
+library(patchwork)
+p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + 
+ geom_bar(state="identity", fill="white") +
+ ylim(c(0,100)) +
+ coord_flip()
+p2 <- ggplot(tabout, aes(x=class, y=y2006, color=class)) + 
+ geom_bar(state="identity", fill="white") +
+ ylim(c(0,100)) +
+ coord_flip()
+
+p1 + p2
+# with coord_flip()
+p1 / p2
+
+# ANCORA NON FATTO
 setwd("~/Desktop")
 arctic <- rast("ellesmere_oli_2014172_lrg.jpg")
 plot(arctic)
@@ -28,35 +99,7 @@ plot(arcc)
 arccim <- im.classify(arctic, num_clusters=3)
 arccim <- im.classify(arctic, num_clusters=3, seed=4)
 
-im.list()
 
-m1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
-m2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")
-
-# Classified images
-m1992c <- im.classify(m1992, num_clusters=2, seed=4) 
-# 1 = forest, 2 = human related areas
-m1992cs <- subst(m1992c, c(1,2), c("forest","human"))
-plot(m1992cs)
-
-m2006c <- im.classify(m2006, num_clusters=2, seed=4)
-# 2 = forest, 1 = human related areas
-m2006cs <- subst(m2006c, c(2,1), c("forest","human"))
-plot(m2006cs)
-
-par(mfrow=c(1,2))
-plot(m1992cs)
-plot(m2006cs)
-
-# percentages
-f1992 <- freq(m1992cs)
-p1992 <- f1992$count / ncell(m1992cs)
-perc1992 <- p1992*100
-# [1] 83.08683 16.91317
-
-f2006 <- freq(m2006cs)
-perc2006 <- f2006$count*100 / ncell(m2006cs)
-# [1] 45.30561 54.69439
 
 # build the table
 # columns:
