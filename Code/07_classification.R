@@ -75,7 +75,46 @@ p1 + p2
 # with coord_flip()
 p1 / p2
 
-# ANCORA NON FATTO
+# Solar Orbiter 
+
+im.list()
+
+solar <- im.import("Solar_Orbiter_s_first_views_of_the_Sun_pillars.jpg")
+
+# Exercise: classify the image in three classes - im.classify()
+solarc <- im.classify(solar, num_clusters=3)
+
+# Plot che original image beside the classified one
+dev.off()
+im.multiframe(1,2)
+plot(solar)
+plot(solarc)
+
+# 3 = low (yellow)
+# 1 = high (green)
+# 2 = medium (violet)
+
+solarcs <- subst(solarc, c(3,1,2) , c("c1_low", "c3_high", "c2_medium"))
+plot(solarcs) 
+
+# Exercise: calculate the percentages of the Sun energy classes with one line of code
+percsolar <- freq(solarc) * 100 / ncell(solarcs)
+
+percsolar <- freq(solarcs)$count * 100 / ncell(solarcs)
+
+# [1] 37.33349 41.44658 21.21993
+# [1] 38 41 21
+
+# create dataframe
+class <- (c("c1_low", "c2_medium", "c3_high"))
+perc < - c(38,41,21)
+tabsol <- data.frame(class, perc)
+
+# final ggplot
+ggplot(tabout, aes(x=class, y=perc, fill=class, color=class)) + 
+ geom_bar(stat="identity") + coord_flip()
+# + scale_y_reverse()
+
 setwd("~/Desktop")
 arctic <- rast("ellesmere_oli_2014172_lrg.jpg")
 plot(arctic)
