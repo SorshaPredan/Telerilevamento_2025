@@ -57,17 +57,17 @@ tabout
 
 library(ggplot2)
 ggplot(tabout, aes(x=class, y=y1992, color=class)) + 
- geom_bar(state="identity", fill="white")
+ geom_bar(stat="identity", fill="white")
 ggplot(tabout, aes(x=class, y=y2006, color=class)) + 
- geom_bar(state="identity", fill="white")
+ geom_bar(stat="identity", fill="white")
 
 library(patchwork)
 p1 <- ggplot(tabout, aes(x=class, y=y1992, color=class)) + 
- geom_bar(state="identity", fill="white") +
+ geom_bar(stat="identity", fill="white") +
  ylim(c(0,100)) +
  coord_flip()
 p2 <- ggplot(tabout, aes(x=class, y=y2006, color=class)) + 
- geom_bar(state="identity", fill="white") +
+ geom_bar(stat="identity", fill="white") +
  ylim(c(0,100)) +
  coord_flip()
 
