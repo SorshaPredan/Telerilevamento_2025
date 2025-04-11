@@ -1,4 +1,5 @@
 # R code for calculating spatial variability
+# https://www.cuemath.com/data/standard-deviation/
 
 library(terra)
 library(imageRy)
@@ -10,8 +11,6 @@ library(RStoolbox)
 
 # Standard deviation
 # 24 26 25
-
-# 
 
 media <- (24 + 26 + 25) / 3
 
@@ -56,9 +55,42 @@ im.plotRGB(sent, r=1, g=2, b=3)
 im.plotRGB(sent, r=2, g=1, b=3)
 im.plotRGB(sent, r=3, g=2, b=1)
 
+#----
 
+nir <- sent[[1]]
 
+# Exercise: plot the NIR band with the inferno color map palette
+dev.off()
+plot(nir, col=inferno(100))
 
+sd3 <- focal(nir, w=c(3,3), fun="sd")
+plot(sd3)
+
+im.multiframe(1,2)
+im.plotRGB(sent, r=1, g=2, b=3)
+plot(sd3)
+
+dev.off()
+sd5 <- focal(nir, w=c(5,5), fun="sd")
+plot(sd5)
+
+im.multiframe(1,2)
+plot(sd3)
+plot(sd5)
+
+# Exercise: use ggplot to plot the standars deviation
+im.ggplot(sd3)
+
+# Exercise: plot the two sd maps (3 and 5) one beside the other with ggplot
+# Come unire le immagini
+p1 <- im.ggplot(sd3)
+p2 <- im.ggplot(sd5)
+
+p1 + p2
+
+# Plot the original nir and the stdev
+p3 = im.ggplot(nir)
+p3 + p1
 
 
 
