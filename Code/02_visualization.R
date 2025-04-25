@@ -98,6 +98,7 @@ plot(sent[[4]])
 # Multiframe with different color palette
 par(mfrow=c(2,2))
 
+# Plotting the blue band (b2)
 clb <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
 plot(b2, col=clb)
 
