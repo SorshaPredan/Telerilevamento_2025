@@ -1,4 +1,6 @@
 # Code for visualizing satellite data
+# Satellite data visualisation in R by imageRy
+# https://sentinels.copernicus.eu/web/sentinel/user-guides/sentinel-2-msi/resolutions/spatial
 
 # install.packages("devtools")
 library(devtools)
