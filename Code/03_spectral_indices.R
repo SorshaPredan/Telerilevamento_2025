@@ -22,7 +22,7 @@ plot(mato1992)
 im.plotRGB(mato1992, r=1, g=2, b=3)
 # Vegetazione verde
 im.plotRGB(mato1992, r=2, g=1, b=3)
-# Suolo nudo diventa giallo
+# Vegetazione blu e Suolo nudo diventa giallo
 im.plotRGB(mato1992, r=2, g=3, b=1)
 
 
