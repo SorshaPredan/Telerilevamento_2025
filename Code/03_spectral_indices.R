@@ -4,10 +4,10 @@ library(imageRy)
 library(terra)
 library(viridis)
 
+im.list()
+
 # Importing data
 # https://visibleearth.nasa.gov/images/35891/deforestation-in-mato-grosso-brazil/35892l
-
-im.list()
 mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
 
 # Rotazione immagine
