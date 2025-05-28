@@ -1,6 +1,13 @@
 # Titolo del progetto
 # Scopo del progetto diviso in tre anni (2018 - 2021 - 2024)
 # pacchetti utilizzati (commento a cosa servono)
+library(terra)
+library(imageRy)
+library(ggplot2)
+library(patchwork)
+library(viridis)
+library(
+library(devtools) # Da rivedere a cosa serve
 
 
 # immagini True color + commento
