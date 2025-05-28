@@ -10,10 +10,9 @@ library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
 # Exporting data
-setwd("C:\Users\user\Desktop\Telerilevamento\ImmaginiESAME")
-setwd("~/Desktop")
+setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 # Windowds users: C://comp/Downloads
-# \
+# \ change direction
 # setwd("C://nome/Downloads")
 
 # Immagini True color + commento
