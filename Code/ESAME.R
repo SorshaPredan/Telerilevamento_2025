@@ -9,21 +9,25 @@ library(viridis)
 library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
-install_github("SorshaPredan/Telerilevamento_2025/nuova_cartella")
+# Exporting data
+setwd("C:\Users\user\Desktop\Telerilevamento\ImmaginiESAME")
+setwd("~/Desktop")
+# Windowds users: C://comp/Downloads
+# \
+# setwd("C://nome/Downloads")
 
 # Immagini True color + commento
 # immagini False color per il calcolo NDVI
 # immagini False color per il calcolo NDRE
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
-UD_2018 <- im.import("UD_2018.jpg")
-UD_2018 <- rast("UD_2018.jpg")
+UD_2018 <- rast("UD_2018.tif")
 UD_2018
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2018
-UDNIR_2018 <-rast("UD_2018_NIR.jpg")
+UDNIR_2018 <-rast("UD_2018_NIR.tif")
 UDNIR_2018
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2018
-UDRedE_2018 <-rast("UD_2018_RedEdge.jpg")
+UDRedE_2018 <-rast("UD_2018_RedEdge.tif")
 UDRedE_2018
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2021
