@@ -14,7 +14,7 @@ library(devtools) # Da rivedere a cosa serve
 # immagini False color per il calcolo NDRE
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
-UD_2018 <- im.import("Udine3_2018.tif")
+UD_2018 <- rast("Udine3_2018.tif")
 UD_2018
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2018
 UDNIR_2018 <-rast("UD_2018_NIR.jpg")
