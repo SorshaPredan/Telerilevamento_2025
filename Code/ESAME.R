@@ -9,12 +9,15 @@ library(viridis)
 library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
+install_github("SorshaPredan/nuova_cartella")
+
 # Immagini True color + commento
 # immagini False color per il calcolo NDVI
 # immagini False color per il calcolo NDRE
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
-UD_2018 <- rast("Udine3_2018.tif")
+UD_2018 <- im.import("UD_2018.jpg")
+UD_2018 <- rast("UD_2018.jpg")
 UD_2018
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2018
 UDNIR_2018 <-rast("UD_2018_NIR.jpg")
