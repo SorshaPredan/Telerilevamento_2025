@@ -43,6 +43,32 @@ UDNIR_2024
 UDRedE_2024 <-rast()
 UDRedE_2024 
 
+# Visualizzazione delle immagini tramite plot
+# Visualizzo le immagini per l'anno 2018
+im.multiframe(3,1)
+plot(UD_2018)
+plot(UDNIR_2018)
+plot(UDRedE_2018)
+plot1(plot(UD_2018), plot(UDNIR_2018), plot(UDRedE_2018)) # controllare 
+
+# Visualizzo le immagini per l'anno 2021
+im.multiframe(3,1)
+plot(UD_2021)
+plot(UDNIR_2021)
+plot(UDRedE_2021)
+
+# Visualizzo le immagini per l'anno 2024
+im.multiframe(3,1)
+plot(UD_2024)
+plot(UDNIR_2024)
+plot(UDRedE_2024)
+
+# Visualizzazione Unica
+im.multiframe(3,3)
+plot1
+plot2
+plot3
+
 # Calcolo NDVI + calcolo NDRE
 # NDVI cosa serve + commento risultato
 # NDRE cosa serve + commento risultato
