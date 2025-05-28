@@ -14,13 +14,13 @@ library(devtools) # Da rivedere a cosa serve
 # immagini False color per il calcolo NDRE
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
-UD_2018 <-rast()
+UD_2018 <-rast("UD_2018.jpg")
 UD_2018
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2018
-UDNIR_2018 <-rast()
+UDNIR_2018 <-rast("UD_2018_NIR.jpg")
 UDNIR_2018
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2018
-UDRedE_2018 <-rast()
+UDRedE_2018 <-rast("UD_2018_RedEdge.jpg")
 UDRedE_2018
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2021
