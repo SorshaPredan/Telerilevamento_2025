@@ -9,7 +9,7 @@ library(viridis)
 library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
-install_github("SorshaPredan/Telerilevamento2025/nuova_cartella")
+install_github("SorshaPredan/Telerilevamento_2025/nuova_cartella")
 
 # Immagini True color + commento
 # immagini False color per il calcolo NDVI
