@@ -47,7 +47,7 @@ UD_2021
 UDNIR_2021 <-rast("UD_2021_NIR.tif")
 UDNIR_2021
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2021
-UDRedE_2021 <-rast()
+UDRedE_2021 <-rast("UD_2021_RedEdge.tif")
 UDRedE_2021 
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2024
@@ -57,7 +57,7 @@ UD_2024
 UDNIR_2024 <-rast("UD_2024_NIR.tif")
 UDNIR_2024
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2024
-UDRedE_2024 <-rast()
+UDRedE_2024 <-rast("UD_2024_RedEdge.tif")
 UDRedE_2024 
 
 # Visualizzazione delle immagini tramite plot
@@ -80,11 +80,14 @@ plot(UD_2024)
 plot(UDNIR_2024)
 plot(UDRedE_2024)
 
-# Visualizzazione Unica
+# Visualizzazione Unica (vedere...)
 im.multiframe(3,3)
 plot1
 plot2
 plot3
+
+# Ottenere un'immagine unica per ogni anno che contenga la banda del NIR per il calcolo NDVI
+# Ottenere un'immagine unica per ogni anno che contenga la banda del Red Edge per il calcolo del NDRE
 
 # Calcolo NDVI + calcolo NDRE
 # NDVI cosa serve + commento risultato
