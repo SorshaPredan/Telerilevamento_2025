@@ -51,7 +51,7 @@ UDRedE_2021 <-rast("UD_2021_RedEdge.tif")
 UDRedE_2021 
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2024
-# From 2018-02-01 to 2018-06-30
+# From 2024-02-01 to 2024-06-30
 UD_2024 <-rast("UD_2024.tif")
 UD_2024
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2024
@@ -67,11 +67,23 @@ UDRedE_2024
 # 2 - band 3 (green)
 # 3 - band 4 (red)
 # 4 - band 8 (NIR)
-# True color vegetation
-im.plotRGB(UD_2018, r=1, g=2, b=3)
-im.plotRGB(UD_2021, r=1, g=2, b=3)
-im.plotRGB(UD_2024, r=1, g=2, b=3)
-# False color vegetazion
+# 5 - band 5 (Red Endge)
+
+# True Color Vegetation (RGB naturale)
+# stretch="lin" : ti aggiusta la dimensione dell'immagine
+plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
+plotRGB(UD_2021, r=3, g=2, b=1, stretch="lin")
+plotRGB(UD_2024, r=3, g=2, b=1, stretch="lin")
+# False color vegetazion (NIR/Red/Green)
+plotRGB(UDNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
+plotRGB(UDNIR_2021, r="B8", g="B4", b="B3", stretch="lin")
+plotRGB(UDNIR_2024, r="B8", g="B4", b="B3", stretch="lin")
+# Vegetation false color (NIR/Red Edge/Blue)
+plotRGB(UDRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
+plotRGB(UDRedE_2021, r="B8", g="B5", b="B2", stretch="lin")
+plotRGB(UDRedE_2024, r="B8", g="B5", b="B2", stretch="lin")
+
+
 
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
