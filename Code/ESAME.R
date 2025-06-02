@@ -20,6 +20,7 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 # immagini False color per il calcolo NDRE
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
+# From 2018-02-01 to 2018-06-30
 UD_2018 <- rast("UD_2018.tif")
 UD_2018
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2018
