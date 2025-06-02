@@ -15,9 +15,18 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 # \ change direction
 # setwd("C://nome/Downloads")
 
-# Immagini True color + commento
+# Immagini True color :
+  # B4 = Red
+  # B3 = Green
+  # B2 = Blue
 # immagini False color per il calcolo NDVI
+  # B8 = NIR 
+  # B4 = Red
+  # B3 = Green
 # immagini False color per il calcolo NDRE
+  # B8 = NIR 
+  # B5 = Red Edge
+  # B2 = Blue
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
 # From 2018-02-01 to 2018-06-30
@@ -31,6 +40,7 @@ UDRedE_2018 <-rast("UD_2018_RedEdge.tif")
 UDRedE_2018
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2021
+# From 2021-02-01 to 2021-06-30
 UD_2021 <-rast()
 UD_2021
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2021
