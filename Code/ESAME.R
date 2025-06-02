@@ -62,12 +62,16 @@ UDRedE_2024 <-rast("UD_2024_RedEdge.tif")
 UDRedE_2024 
 
 # Visualizzazione immagine vegetazione
-# 1 = red
-# 2 = green
-# 3 = ble
+# Layers
+# 1 - band 2 (blue)
+# 2 - band 3 (green)
+# 3 - band 4 (red)
+# 4 - band 8 (NIR)
+# True color vegetation
 im.plotRGB(UD_2018, r=1, g=2, b=3)
 im.plotRGB(UD_2021, r=1, g=2, b=3)
 im.plotRGB(UD_2024, r=1, g=2, b=3)
+# False color vegetazion
 
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
