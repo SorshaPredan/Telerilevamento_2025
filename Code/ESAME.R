@@ -62,13 +62,6 @@ UDRedE_2024 <-rast("UD_2024_RedEdge.tif")
 UDRedE_2024 
 
 # Visualizzazione immagine vegetazione
-# Layers
-# 1 - band 2 (blue)
-# 2 - band 3 (green)
-# 3 - band 4 (red)
-# 4 - band 8 (NIR)
-# 5 - band 5 (Red Endge)
-
 # True Color Vegetation (RGB naturale)
 # stretch="lin" : ti aggiusta la dimensione dell'immagine
 plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
