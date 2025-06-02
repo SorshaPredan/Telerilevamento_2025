@@ -64,6 +64,7 @@ UDRedE_2024
 # Visualizzazione immagine vegetazione
 # True Color Vegetation (RGB naturale)
 # stretch="lin" : ti aggiusta la dimensione dell'immagine
+im.multiframe(3,3)
 plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
 plotRGB(UD_2021, r=3, g=2, b=1, stretch="lin")
 plotRGB(UD_2024, r=3, g=2, b=1, stretch="lin")
@@ -76,8 +77,7 @@ plotRGB(UDRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
 plotRGB(UDRedE_2021, r="B8", g="B5", b="B2", stretch="lin")
 plotRGB(UDRedE_2024, r="B8", g="B5", b="B2", stretch="lin")
 
-
-
+-----
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
 UD2018_br <-UD_2018[[1]]
