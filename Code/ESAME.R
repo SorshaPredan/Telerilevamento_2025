@@ -63,6 +63,7 @@ UDRedE_2024
 
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
+im.plotRGB(UD_2018, r=1, g=2, b=3)
 UD2018_br <-UD_2018[[1]]
 UD2018_bg <-UD_2018[[2]]
 UD2018_bb <-UD_2018[[3]]
