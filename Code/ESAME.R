@@ -51,6 +51,7 @@ UDRedE_2021 <-rast("UD_2021_RedEdge.tif")
 UDRedE_2021 
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2024
+# From 2018-02-01 to 2018-06-30
 UD_2024 <-rast("UD_2024.tif")
 UD_2024
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2024
@@ -80,7 +81,25 @@ UD2024_bb <-UD_2024[[3]]
 UD2024_nir <-UDNIR_2024[[1]]
 Udine2024 <-c(UD2024_br, UD2024_bg, UD2024_bb, UD2024_nir)
 
-
+# Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande GreenBlueNirRedEdge (B3, B2, B8, B5) Vedi tu poi come voui disporlo
+# Anno 2018
+UD2018_bg <-UD_2018[[2]]
+UD2018_bb <-UD_2018[[3]]
+UD2018_nir <-UDNIR_2018[[1]]
+UD2018_rededge <-UDRedE_2018[[2]]
+Udine18 <-c(UD2018_bg, UD2018_bb, UD2018_nir, UD2018_rededge)
+# Anno 2021
+UD2021_bg <-UD_2021[[2]]
+UD2021_bb <-UD_2021[[3]]
+UD2021_nir <-UDNIR_2021[[1]]
+UD2021_rededge <-UDRedE_2021[[2]]
+Udine21 <-c(UD2021_bg, UD2021_bb, UD2021_nir, UD2021_rededge)
+# Anno 2024
+UD2024_bg <-UD_2024[[2]]
+UD2024_bb <-UD_2024[[3]]
+UD2024_nir <-UDNIR_2024[[1]]
+UD2024_rededge <-UDRedE_2024[[2]]
+Udine24 <-c(UD2024_bg, UD2024_bb, UD2024_nir, UD2024_rededge)
 
 # Visualizzo le immagini per l'anno 2021
 im.multiframe(3,1)
