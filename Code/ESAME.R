@@ -10,7 +10,7 @@ library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
 # Exporting data
-setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
+setwd("C:/Users/user/Desktop/Telerilevamento")
 # Windowds users: C://comp/Downloads
 # \ change direction
 # setwd("C://nome/Downloads")
@@ -44,7 +44,7 @@ UDRedE_2018
 UD_2021 <-rast("UD_2021.tif")
 UD_2021
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2021
-UDNIR_2021 <-rast()
+UDNIR_2021 <-rast("UD_2021_NIR.tif")
 UDNIR_2021
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2021
 UDRedE_2021 <-rast()
@@ -54,7 +54,7 @@ UDRedE_2021
 UD_2024 <-rast("UD_2024.tif")
 UD_2024
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2024
-UDNIR_2024 <-rast()
+UDNIR_2024 <-rast("UD_2024_NIR.tif")
 UDNIR_2024
 # Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2024
 UDRedE_2024 <-rast()
