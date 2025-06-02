@@ -10,7 +10,7 @@ library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
 # Exporting data
-setwd("C:/Users/user/Desktop/Telerilevamento")
+setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 # Windowds users: C://comp/Downloads
 # \ change direction
 # setwd("C://nome/Downloads")
@@ -60,13 +60,27 @@ UDNIR_2024
 UDRedE_2024 <-rast("UD_2024_RedEdge.tif")
 UDRedE_2024 
 
-# Visualizzazione delle immagini tramite plot
-# Visualizzo le immagini per l'anno 2018
-im.multiframe(3,1)
-plot(UD_2018)
-plot(UDNIR_2018)
-plot(UDRedE_2018)
-plot1(plot(UD_2018), plot(UDNIR_2018), plot(UDRedE_2018)) # controllare 
+# Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
+# Anno 2018
+UD2018_br <-UD_2018[[1]]
+UD2018_bg <-UD_2018[[2]]
+UD2018_bb <-UD_2018[[3]]
+UD2018_nir <-UDNIR_2018[[1]]
+Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
+# Anno 2021
+UD2021_br <-UD_2021[[1]]
+UD2021_bg <-UD_2021[[2]]
+UD2021_bb <-UD_2021[[3]]
+UD2021_nir <-UDNIR_2021[[1]]
+Udine2021 <-c(UD2021_br, UD2021_bg, UD2021_bb, UD2021_nir)
+# Anno 2024
+UD2024_br <-UD_2024[[1]]
+UD2024_bg <-UD_2024[[2]]
+UD2024_bb <-UD_2024[[3]]
+UD2024_nir <-UDNIR_2024[[1]]
+Udine2024 <-c(UD2024_br, UD2024_bg, UD2024_bb, UD2024_nir)
+
+
 
 # Visualizzo le immagini per l'anno 2021
 im.multiframe(3,1)
