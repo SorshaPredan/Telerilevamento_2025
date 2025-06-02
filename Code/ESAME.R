@@ -41,7 +41,7 @@ UDRedE_2018
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2021
 # From 2021-02-01 to 2021-06-30
-UD_2021 <-rast()
+UD_2021 <-rast("UD_2021.tif")
 UD_2021
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2021
 UDNIR_2021 <-rast()
@@ -51,7 +51,7 @@ UDRedE_2021 <-rast()
 UDRedE_2021 
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2024
-UD_2024 <-rast()
+UD_2024 <-rast("UD_2024.tif")
 UD_2024
 # Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2024
 UDNIR_2024 <-rast()
