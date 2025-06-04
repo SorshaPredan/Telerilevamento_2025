@@ -85,21 +85,49 @@ UD2018_bg <-UD_2018[[2]]
 UD2018_bb <-UD_2018[[3]]
 UD2018_nir <-UDNIR_2018[[1]]
 Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
-plot(Udine2018,stretch="lin")
 # Anno 2021
 UD2021_br <-UD_2021[[1]]
 UD2021_bg <-UD_2021[[2]]
 UD2021_bb <-UD_2021[[3]]
 UD2021_nir <-UDNIR_2021[[1]]
 Udine2021 <-c(UD2021_br, UD2021_bg, UD2021_bb, UD2021_nir)
-plot(Udine2021,stretch="lin")
 # Anno 2024
 UD2024_br <-UD_2024[[1]]
 UD2024_bg <-UD_2024[[2]]
 UD2024_bb <-UD_2024[[3]]
 UD2024_nir <-UDNIR_2024[[1]]
 Udine2024 <-c(UD2024_br, UD2024_bg, UD2024_bb, UD2024_nir)
-plot(Udine2024,stretch="lin")
+
+# Visualizzazione immagine in funzione del NIR
+# Vegetazione rossa: Nir , Green, Blue
+im.multiframe(3,1)
+im.plotRGB(Udine2018, 4,2,3) 
+im.plotRGB(Udine2021, 4,2,3) 
+im.plotRGB(Udine2024, 4,2,3) 
+# Vegetazione blu: Red, Green, Nir
+im.multiframe(3,1)
+im.plotRGB(Udine2018, 1,2,4)
+im.plotRGB(Udine2021, 1,2,4)
+im.plotRGB(Udine2024, 1,2,4)
+# Vegetazione verde: Red, Nir, Bue
+im.multiframe(3,1)
+im.plotRGB(Udine2018, 1,4,3)
+im.plotRGB(Udine2021, 1,4,3)
+im.plotRGB(Udine2024, 1,4,3)
+
+# vedere se fare prima il calcolo DVI - NDVI e NDRE e fare gli argomenti successivi
+# Matrice di grafici
+pairs(Udine2018)    
+pairs(Udine2021)
+pairs(Udine2024)
+
+# Classificazione delle immagini e calcolo frequenza
+Udine2018c <-im.classify(Udine2018,2)
+
+
+
+
+
 
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande GreenBlueNirRedEdge (B3, B2, B8, B5) Vedi tu poi come voui disporlo
 # Anno 2018
@@ -108,36 +136,36 @@ UD2018_bb <-UD_2018[[3]]
 UD2018_nir <-UDNIR_2018[[1]]
 UD2018_rededge <-UDRedE_2018[[2]]
 Udine18 <-c(UD2018_bg, UD2018_bb, UD2018_nir, UD2018_rededge)
+im.plotRGB(Udine18, 4,3,2) # Red Edge , Nir, Blue
 # Anno 2021
 UD2021_bg <-UD_2021[[2]]
 UD2021_bb <-UD_2021[[3]]
 UD2021_nir <-UDNIR_2021[[1]]
 UD2021_rededge <-UDRedE_2021[[2]]
 Udine21 <-c(UD2021_bg, UD2021_bb, UD2021_nir, UD2021_rededge)
+im.plotRGB(Udine21, 4,3,2) # Red Edge , Nir, Blue
 # Anno 2024
 UD2024_bg <-UD_2024[[2]]
 UD2024_bb <-UD_2024[[3]]
 UD2024_nir <-UDNIR_2024[[1]]
 UD2024_rededge <-UDRedE_2024[[2]]
 Udine24 <-c(UD2024_bg, UD2024_bb, UD2024_nir, UD2024_rededge)
+im.plotRGB(Udine24, 4,3,2) # Red Edge , Nir, Blue
 
-# Visualizzo le immagini per l'anno 2021
-im.multiframe(3,1)
-plot(UD_2021)
-plot(UDNIR_2021)
-plot(UDRedE_2021)
 
-# Visualizzo le immagini per l'anno 2024
-im.multiframe(3,1)
-plot(UD_2024)
-plot(UDNIR_2024)
-plot(UDRedE_2024)
-
-# Visualizzazione Unica (vedere...)
+----
+# Visualizzo le immagini per l'anno 2018 - 2021 - 2024
+# Nir , Green, Blue
 im.multiframe(3,3)
-plot1
-plot2
-plot3
+im.plotRGB(Udine2018, 4,2,3)
+im.plotRGB(Udine2021, 4,2,3)
+im.plotRGB(Udine2024, 4,2,3)
+# Red Edge , Nir, Blue
+im.plotRGB(Udine18, 4,3,2)
+im.plotRGB(Udine21, 4,3,2)
+im.plotRGB(Udine24, 4,3,2)
+
+
 
 # Ottenere un'immagine unica per ogni anno che contenga la banda del NIR per il calcolo NDVI
 # Ottenere un'immagine unica per ogni anno che contenga la banda del Red Edge per il calcolo del NDRE
