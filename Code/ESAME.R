@@ -10,10 +10,10 @@ library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
 
 # Exporting data
-setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
-# Windowds users: C://comp/Downloads
 # \ change direction
+# Windowds users: C://comp/Downloads
 # setwd("C://nome/Downloads")
+setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 
 # Immagini True color :
   # B4 = Red
@@ -63,7 +63,7 @@ UDRedE_2024
 
 # Visualizzazione immagine vegetazione
 # True Color Vegetation (RGB naturale)
-# stretch="lin" : ti aggiusta la dimensione dell'immagine
+# stretch="lin" : aggiusta la dimensione dell'immagine
 im.multiframe(3,3)
 plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
 plotRGB(UD_2021, r=3, g=2, b=1, stretch="lin")
@@ -85,18 +85,21 @@ UD2018_bg <-UD_2018[[2]]
 UD2018_bb <-UD_2018[[3]]
 UD2018_nir <-UDNIR_2018[[1]]
 Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
+plot(Udine2018,stretch="lin")
 # Anno 2021
 UD2021_br <-UD_2021[[1]]
 UD2021_bg <-UD_2021[[2]]
 UD2021_bb <-UD_2021[[3]]
 UD2021_nir <-UDNIR_2021[[1]]
 Udine2021 <-c(UD2021_br, UD2021_bg, UD2021_bb, UD2021_nir)
+plot(Udine2021,stretch="lin")
 # Anno 2024
 UD2024_br <-UD_2024[[1]]
 UD2024_bg <-UD_2024[[2]]
 UD2024_bb <-UD_2024[[3]]
 UD2024_nir <-UDNIR_2024[[1]]
 Udine2024 <-c(UD2024_br, UD2024_bg, UD2024_bb, UD2024_nir)
+plot(Udine2024,stretch="lin")
 
 # Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande GreenBlueNirRedEdge (B3, B2, B8, B5) Vedi tu poi come voui disporlo
 # Anno 2018
