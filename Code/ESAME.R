@@ -118,6 +118,37 @@ im.plotRGB(Udine2024, 1,4,3)
 # vedere se fare prima il calcolo DVI - NDVI e NDRE e fare gli argomenti successivi
 # Calcolo DVI e NDVI
 # commento NDVI
+# DVI - Difference Vegetation Index
+# Tree:          NIR = 255 (8 bit), red = 0 (8 bit)
+# DVI =          NIR - red = 255 - 0 = 255 (pianta sana)
+# Stressed tree: NIR = 100 (8 bit), red = 30 (8 bit)
+# DVI =          NIR - red = 100 - 30 = 70 (pianta sotto stress)
+
+dvi2018 = UD2018_nir - UD2018_br # NIR - red
+plot(dvi2018)
+
+# Range dvi
+# Maximum: NIR - red = 255 - 0 = 255
+# Minimum: NIR - red = 0 - 255 = -255
+
+plot(dvi1992, col=magma(100))
+plot(dvi1992, col=inferno(100))
+
+# Calculate dvi for 2006
+dvi2006 = mato2006[[1]] - mato2006[[2]] # NIR - red
+plot(dvi2006)
+
+# Range dvi
+# Maximum: NIR - red = 100 - 30 = 70
+# Minimum: NIR - red = 30 - 100 = -70
+
+plot(dvi2006, col=magma(100))
+plot(dvi2006, col=inferno(100))
+
+im.multiframe(1,2)
+plot(dvi1992, col=inferno(100))
+plot(dvi2006, col=inferno(100))
+
 # Anno 2018
 # Anno 2021
 # Anno 2024
