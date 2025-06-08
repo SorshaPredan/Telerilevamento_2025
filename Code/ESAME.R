@@ -116,6 +116,16 @@ im.plotRGB(Udine2021, 1,4,3)
 im.plotRGB(Udine2024, 1,4,3)
 
 # vedere se fare prima il calcolo DVI - NDVI e NDRE e fare gli argomenti successivi
+# Calcolo DVI e NDVI
+# commento NDVI
+# Anno 2018
+# Anno 2021
+# Anno 2024
+
+
+
+
+
 # Matrice di grafici
 pairs(Udine2018)    
 pairs(Udine2021)
