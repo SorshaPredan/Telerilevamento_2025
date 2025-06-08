@@ -126,6 +126,10 @@ im.plotRGB(Udine2024, 1,4,3)
 
 dvi2018 = UD2018_nir - UD2018_br # NIR - red
 plot(dvi2018)
+dvi2021 = UD2021_nir - UD2021_br # NIR - red
+plot(dvi2021)
+dvi2024 = UD2024_nir - UD2024_br # NIR - red
+plot(dvi2024)
 
 # Range dvi
 # Maximum: NIR - red = 255 - 0 = 255
