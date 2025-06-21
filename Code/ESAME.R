@@ -151,6 +151,34 @@ im.multiframe(2,1)
 plot(ndvi2018)
 plot(ndvi2022)
 
+# Calcolo dell'NDRE
+# 2018
+UD2018RE_br <-UDRedE_2018[[1]]   # NIR
+UD2018RE_bg <-UDRedE_2018[[2]]   # RedE
+UD2018RE_bb <-UDRedE_2018[[3]]   # Blue
+# 2022
+UD2022RE_br <-UDRedE_2022[[1]]   # NIR
+UD2022RE_bg <-UDRedE_2022[[2]]   # RedE
+UD2022RE_bb <-UDRedE_2022[[3]]   # Blue
+
+ndre2018 = (UD2018RE_br - UD2018RE_bg) / (UD2018RE_br + UD2018RE_bg)
+plot(ndre2018)
+ndre2022 = (UD2022RE_br - UD2022RE_bg) / (UD2022RE_br + UD2022RE_bg)
+plot(ndre2022)
+
+# Ricostruzione immagine per anno (2018 - 2022) con le bande NirRedEdge (B4, B3, B2, B8)
+# Anno 2018
+UD2018_br <-UD_2018[[1]]
+UD2018_bg <-UD_2018[[2]]
+UD2018_bb <-UD_2018[[3]]
+UD2018_nir <-UDNIR_2018[[1]]
+UD2018_RE <-UDRed
+Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
+
+
+
+
+
 
 # ARGOMENTO SUCCESSIVO
 # Matrice di grafici
