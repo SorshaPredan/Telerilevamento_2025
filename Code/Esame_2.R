@@ -72,9 +72,14 @@ plotRGB(TarvisioRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
 Tr2018_br <-Tarvisio_2018[[1]]
 Tr2018_bg <-Tarvisio_2018[[2]]
 Tr2018_bb <-Tarvisio_2018[[3]]
-Tr2018_nir <-TrarvisioNIR_2018[[1]]
+Tr2018_nir <-TarvisioNIR_2018[[1]]
 Tarvisio2018 <-c(Tr2018_br, Tr2018_bg, Tr2018_bb, Tr2018_nir)
-
+# Bande Red Edge
+Tr2018_bnir <-TarvisioRedE_2018[[1]]
+Tr2018_bRE <-TarvisioRedE_2018[[2]]
+Tr2018_bb <-TarvisioRedE_2018[[3]]
+Tr2018_bg <-TarvisioNIR_2018[[3]]
+Tarvisio2018_RE <-c(Tr2018_bnir, Tr2018_bRE, Tr2018_bb, Tr2018_bg)
 
 
 
