@@ -6,9 +6,11 @@ library(terra)
 library(imageRy)
 library(ggplot2)
 library(patchwork)
-library(viridis)
 library(cblindplot)
 library(devtools) # Da rivedere a cosa serve
+# Viridis colors:
+# https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+library(viridis)
 
 # Exporting data
 # \ change direction
@@ -101,12 +103,12 @@ dev.off()
 # Utilizzo pacchetto viridis
 # 2018
 plot(UD2018_nir)
-plot(UD2018_nir, col=magma (100))
-plot(UD2018_nir, col=mako (100))
+plot(UD2018_nir, col=inferno (100))
+plot(UD2018_nir, col=rocket (100))
 # 2022
 plot(UD2022_nir)
-plot(UD2022_nir, col=magma (100))
-plot(UD2022_nir, col=mako (100))
+plot(UD2022_nir, col=inferno (100))
+plot(UD2022_nir, col=rocket (100))
 
 dev.off()
 
@@ -120,27 +122,16 @@ dev.off()
 # Calculate dvi for 2018
 dvi2018 = UD2018_nir - UD2018_br # NIR - red
 plot(dvi2018)
-
-# Range dvi (vedere i tuoi parametri)
-# Maximum: NIR - red = 255 - 0 = 255
-# Minimum: NIR - red = 0 - 255 = -255
-
-plot(dvi2018, col=magma(100))
 plot(dvi2018, col=inferno(100))
-
+plot(dvi2018, col=rocket(100))
 # Calculate dvi for 2022
 dvi2022 = UD2022_nir - UD2022_br # NIR - red
 plot(dvi2022)
-
-# Range dvi (vedere i tuoi parametri)
-# Maximum: NIR - red = 255 - 0 = 255
-# Minimum: NIR - red = 0 - 255 = -255
-
-plot(dvi2022, col=magma(100))
 plot(dvi2022, col=inferno(100))
+plot(dvi2022, col=rocket(100))
 
 # Plot a confronto con viridis
-im.multiframe(1,2)
+im.multiframe(2,1)
 plot(dvi2018, col=inferno(100))
 plot(dvi2022, col=inferno(100))
 
@@ -156,6 +147,10 @@ plot(ndvi2018)
 ndvi2022 = (UD2022_nir - UD2022_br) / (UD2022_nir + UD2022_br)
 # ndvi2022 = dvi2022 / (UD2022_nir + UD2022_br)
 plot(ndvi2022)
+im.multiframe(2,1)
+plot(ndvi2018)
+plot(ndvi2022)
+
 
 # ARGOMENTO SUCCESSIVO
 # Matrice di grafici
