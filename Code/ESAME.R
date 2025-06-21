@@ -61,7 +61,7 @@ plotRGB(UD_2022, r=3, g=2, b=1, stretch="lin")
 
 # False color vegetazion (NIR/Red/Green)
 plotRGB(UDNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
-plotRGB(UDNIR_2021, r="B8", g="B4", b="B3", stretch="lin")
+plotRGB(UDNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
 
 # Vegetation false color (NIR/Red Edge/Blue)
 plotRGB(UDRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
