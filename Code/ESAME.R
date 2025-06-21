@@ -1,5 +1,6 @@
 # Titolo del progetto
-# Scopo del progetto diviso in tre anni (2018 - 2021 - 2024)
+# Scopo del progetto: osservare i cambiamenti e/o perdita di vegetazione a causa di stress dovuti a cambiamenti ambientali e patologie vegetali quali la processionaria del pino e il bostrico del castagno.
++ sono stati presi in considerazione due anni (2018 - 2022). Le immagini sono state selezionate da Sentinel....
 # pacchetti utilizzati (commento a cosa servono)
 library(terra)
 library(imageRy)
@@ -39,128 +40,126 @@ UDNIR_2018
 UDRedE_2018 <-rast("UD_2018_RedEdge.tif")
 UDRedE_2018
 
-# Importo l'immagine "True color" (RGB) per l'ANNO 2021
-# From 2021-02-01 to 2021-06-30
-UD_2021 <-rast("UD_2021.tif")
-UD_2021
-# Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2021
-UDNIR_2021 <-rast("UD_2021_NIR.tif")
-UDNIR_2021
-# Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2021
-UDRedE_2021 <-rast("UD_2021_RedEdge.tif")
-UDRedE_2021 
+# Importo l'immagine "True color" (RGB) per l'ANNO 2022
+# From 2022-02-01 to 2022-06-30
+UD_2022 <-rast("UD_2022.tif")
+UD_2022
+# Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2022
+UDNIR_2022 <-rast("UD_2022_NIR.tif")
+UDNIR_2022
+# Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2022
+UDRedE_2022 <-rast("UD_2022_RedEdge.tif")
+UDRedE_2022 
 
-# Importo l'immagine "True color" (RGB) per l'ANNO 2024
-# From 2024-02-01 to 2024-06-30
-UD_2024 <-rast("UD_2024.tif")
-UD_2024
-# Importo l'immagine "False color" (NIR, Red, Green) per l'ANNO 2024
-UDNIR_2024 <-rast("UD_2024_NIR.tif")
-UDNIR_2024
-# Importo l'immagine "False color" (NIR, Red Edge, Blue) per l'ANNO 2024
-UDRedE_2024 <-rast("UD_2024_RedEdge.tif")
-UDRedE_2024 
 
 # Visualizzazione immagine vegetazione
 # True Color Vegetation (RGB naturale)
 # stretch="lin" : aggiusta la dimensione dell'immagine
-im.multiframe(3,3)
+im.multiframe(1,2)
 plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
-plotRGB(UD_2021, r=3, g=2, b=1, stretch="lin")
-plotRGB(UD_2024, r=3, g=2, b=1, stretch="lin")
+plotRGB(UD_2022, r=3, g=2, b=1, stretch="lin")
+
 # False color vegetazion (NIR/Red/Green)
 plotRGB(UDNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
 plotRGB(UDNIR_2021, r="B8", g="B4", b="B3", stretch="lin")
-plotRGB(UDNIR_2024, r="B8", g="B4", b="B3", stretch="lin")
+
 # Vegetation false color (NIR/Red Edge/Blue)
 plotRGB(UDRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
-plotRGB(UDRedE_2021, r="B8", g="B5", b="B2", stretch="lin")
-plotRGB(UDRedE_2024, r="B8", g="B5", b="B2", stretch="lin")
+plotRGB(UDRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
 
+dev.off()
+
+# Visualizzazione immagine in funzione del NIR
+# Plot a confronto
+# Vegetazione rossa: Nir , Green, Blue
+im.multiframe(1,2)
+im.plotRGB(Udine2018, 4,2,3) 
+im.plotRGB(Udine2022, 4,2,3) 
+# Vegetazione blu: Red, Green, Nir
+im.multiframe(1,2)
+im.plotRGB(Udine2018, 1,2,4)
+im.plotRGB(Udine2022, 1,2,4)
+# Vegetazione verde: Red, Nir, Bue
+im.multiframe(1,2)
+im.plotRGB(Udine2018, 1,4,3)
+im.plotRGB(Udine2022, 1,4,3)
+
+dev.off()
 -----
-# Visualizzazione delle immagini per anno (2018 - 2021 - 2024) con le bande RGBNir (B4, B3, B2, B8)
+# Ricostruzione immagine per anno (2018 - 2022) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
 UD2018_br <-UD_2018[[1]]
 UD2018_bg <-UD_2018[[2]]
 UD2018_bb <-UD_2018[[3]]
 UD2018_nir <-UDNIR_2018[[1]]
 Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
-# Anno 2021
-UD2021_br <-UD_2021[[1]]
-UD2021_bg <-UD_2021[[2]]
-UD2021_bb <-UD_2021[[3]]
-UD2021_nir <-UDNIR_2021[[1]]
-Udine2021 <-c(UD2021_br, UD2021_bg, UD2021_bb, UD2021_nir)
-# Anno 2024
-UD2024_br <-UD_2024[[1]]
-UD2024_bg <-UD_2024[[2]]
-UD2024_bb <-UD_2024[[3]]
-UD2024_nir <-UDNIR_2024[[1]]
-Udine2024 <-c(UD2024_br, UD2024_bg, UD2024_bb, UD2024_nir)
+# Anno 2022
+UD2022_br <-UD_2021[[1]]
+UD2022_bg <-UD_2021[[2]]
+UD2022_bb <-UD_2021[[3]]
+UD2022_nir <-UDNIR_2021[[1]]
+Udine2022 <-c(UD2022_br, UD2022_bg, UD2022_bb, UD2022_nir)
 
-# Visualizzazione immagine in funzione del NIR
-# Vegetazione rossa: Nir , Green, Blue
-im.multiframe(3,1)
-im.plotRGB(Udine2018, 4,2,3) 
-im.plotRGB(Udine2021, 4,2,3) 
-im.plotRGB(Udine2024, 4,2,3) 
-# Vegetazione blu: Red, Green, Nir
-im.multiframe(3,1)
-im.plotRGB(Udine2018, 1,2,4)
-im.plotRGB(Udine2021, 1,2,4)
-im.plotRGB(Udine2024, 1,2,4)
-# Vegetazione verde: Red, Nir, Bue
-im.multiframe(3,1)
-im.plotRGB(Udine2018, 1,4,3)
-im.plotRGB(Udine2021, 1,4,3)
-im.plotRGB(Udine2024, 1,4,3)
+# Utilizzo pacchetto viridis
+# 2018
+plot(UD2018_nir)
+plot(UD2018_nir, col=magma (100))
+plot(UD2018_nir, col=mako (100))
+# 2022
+plot(UD2022_nir)
+plot(UD2022_nir, col=magma (100))
+plot(UD2022_nir, col=mako (100))
 
-# vedere se fare prima il calcolo DVI - NDVI e NDRE e fare gli argomenti successivi
-# Calcolo DVI e NDVI
-# commento NDVI
+dev.off()
+
+# Calcolo DVI 
 # DVI - Difference Vegetation Index
 # Tree:          NIR = 255 (8 bit), red = 0 (8 bit)
 # DVI =          NIR - red = 255 - 0 = 255 (pianta sana)
 # Stressed tree: NIR = 100 (8 bit), red = 30 (8 bit)
 # DVI =          NIR - red = 100 - 30 = 70 (pianta sotto stress)
 
+# Calculate dvi for 2018
 dvi2018 = UD2018_nir - UD2018_br # NIR - red
 plot(dvi2018)
-dvi2021 = UD2021_nir - UD2021_br # NIR - red
-plot(dvi2021)
-dvi2024 = UD2024_nir - UD2024_br # NIR - red
-plot(dvi2024)
 
-# Range dvi
+# Range dvi (vedere i tuoi parametri)
 # Maximum: NIR - red = 255 - 0 = 255
 # Minimum: NIR - red = 0 - 255 = -255
 
-plot(dvi1992, col=magma(100))
-plot(dvi1992, col=inferno(100))
+plot(dvi2018, col=magma(100))
+plot(dvi2018, col=inferno(100))
 
-# Calculate dvi for 2006
-dvi2006 = mato2006[[1]] - mato2006[[2]] # NIR - red
-plot(dvi2006)
+# Calculate dvi for 2022
+dvi2022 = UD2022_nir - UD2022_br # NIR - red
+plot(dvi2022)
 
-# Range dvi
-# Maximum: NIR - red = 100 - 30 = 70
-# Minimum: NIR - red = 30 - 100 = -70
+# Range dvi (vedere i tuoi parametri)
+# Maximum: NIR - red = 255 - 0 = 255
+# Minimum: NIR - red = 0 - 255 = -255
 
-plot(dvi2006, col=magma(100))
-plot(dvi2006, col=inferno(100))
+plot(dvi2022, col=magma(100))
+plot(dvi2022, col=inferno(100))
 
+# Plot a confronto con viridis
 im.multiframe(1,2)
-plot(dvi1992, col=inferno(100))
-plot(dvi2006, col=inferno(100))
+plot(dvi2018, col=inferno(100))
+plot(dvi2022, col=inferno(100))
 
-# Anno 2018
-# Anno 2021
-# Anno 2024
+# NDVI (standardization) 8 bit: range (0-255)
+# Maximum: (NIR - red) / (NIR + red) = (255 - 0) / (255 + 0) = 1
+# Minimum: NIR - red / (NIR + red) = (0 - 255) / (0 + 255) = -1
 
+# 2018
+ndvi2018 = (UD2018_nir - UD2018_br) / (UD2018_nir + UD2018_br)
+# ndvi2018 = dvi2018 / (UD2018_nir + UD2018_br)
+plot(ndvi2018)
+# 2022
+ndvi2022 = (UD2022_nir - UD2022_br) / (UD2022_nir + UD2022_br)
+# ndvi2022 = dvi2022 / (UD2022_nir + UD2022_br)
+plot(ndvi2022)
 
-
-
-
+# ARGOMENTO SUCCESSIVO
 # Matrice di grafici
 pairs(Udine2018)    
 pairs(Udine2021)
