@@ -175,4 +175,19 @@ plot(ndre2022, col=inferno (100))
 
 
 
+# manca anche l'argomento delle mappe con ggplot vedere se farlo adesso o dopo
+
+# ARGOMENTO SUCCESSIVO
+# Matrice di grafici
+pairs(Tarvisio2018)    
+pairs(Tarvisio2022)
+
+
+# Classificazione delle immagini e calcolo frequenza
+Tarvisio2018c <-im.classify(Tarvisio2018,2)
+#
+# 
+Tarvisio2022c <-im.classify(Tarvisio2022,2)
+
+
 
