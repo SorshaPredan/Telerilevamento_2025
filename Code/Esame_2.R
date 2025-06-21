@@ -72,29 +72,31 @@ dev.off()
 # Ricostruzione immagine per anno (2018 - 2022)
 # Anno 2018
 # Bande RGB + NIR (B4, B3, B2, B8)
-Tr2018_br <-Tarvisio_2018[[1]]
-Tr2018_bg <-Tarvisio_2018[[2]]
-Tr2018_bb <-Tarvisio_2018[[3]]
-Tr2018_nir <-TarvisioNIR_2018[[1]]
+Tr2018_br <-Tr_2018[[1]]
+Tr2018_bg <-Tr_2018[[2]]
+Tr2018_bb <-Tr_2018[[3]]
+Tr2018_nir <-TrNIR_2018[[1]]
 Tarvisio2018 <-c(Tr2018_br, Tr2018_bg, Tr2018_bb, Tr2018_nir)
+Tarvisio2018
 # Bande Red Edge + NIR (B8, B5, B2, B3)
-Tr2018_bnir <-TarvisioRedE_2018[[1]]
-Tr2018_bRE <-TarvisioRedE_2018[[2]]
-Tr2018_bb <-TarvisioRedE_2018[[3]]
-Tr2018_bg <-TarvisioNIR_2018[[3]]
+Tr2018_bnir <-TrRedE_2018[[1]]
+Tr2018_bRE <-TrRedE_2018[[2]]
+Tr2018_bb <-TrRedE_2018[[3]]
+Tr2018_bg <-TrNIR_2018[[3]]
 Tarvisio2018_RE <-c(Tr2018_bnir, Tr2018_bRE, Tr2018_bb, Tr2018_bg)
+Tarvisio2018_RE
 # Anno 2022
 # Bande RGB + NIR (B4, B3, B2, B8)
-Tr2022_br <-Tarvisio_2022[[1]]
-Tr2022_bg <-Tarvisio_2022[[2]]
-Tr2022_bb <-Tarvisio_2022[[3]]
-Tr2022_nir <-TarvisioNIR_2022[[1]]
+Tr2022_br <-Tr_2022[[1]]
+Tr2022_bg <-Tr_2022[[2]]
+Tr2022_bb <-Tr_2022[[3]]
+Tr2022_nir <-TrNIR_2022[[1]]
 Tarvisio2022 <-c(Tr2022_br, Tr2022_bg, Tr2022_bb, Tr2022_nir)
 # Bande Red Edge + NIR (B8, B5, B2, B3)
-Tr2022_bnir <-TarvisioRedE_2022[[1]]
-Tr2022_bRE <-TarvisioRedE_2022[[2]]
-Tr2022_bb <-TarvisioRedE_2022[[3]]
-Tr2022_bg <-TarvisioNIR_2022[[3]]
+Tr2022_bnir <-TrRedE_2022[[1]]
+Tr2022_bRE <-TrRedE_2022[[2]]
+Tr2022_bb <-TrRedE_2022[[3]]
+Tr2022_bg <-TrNIR_2022[[3]]
 Tarvisio2022_RE <-c(Tr2022_bnir, Tr2022_bRE, Tr2022_bb, Tr2022_bg)
 
 # Visualizzazione immagine in funzione del NIR
