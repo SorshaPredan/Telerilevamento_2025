@@ -92,12 +92,14 @@ Tr2022_bg <-Tr_2022[[2]]
 Tr2022_bb <-Tr_2022[[3]]
 Tr2022_nir <-TrNIR_2022[[1]]
 Tarvisio2022 <-c(Tr2022_br, Tr2022_bg, Tr2022_bb, Tr2022_nir)
+Tarvisio2022
 # Bande Red Edge + NIR (B8, B5, B2, B3)
 Tr2022_bnir <-TrRedE_2022[[1]]
 Tr2022_bRE <-TrRedE_2022[[2]]
 Tr2022_bb <-TrRedE_2022[[3]]
 Tr2022_bg <-TrNIR_2022[[3]]
 Tarvisio2022_RE <-c(Tr2022_bnir, Tr2022_bRE, Tr2022_bb, Tr2022_bg)
+Tarvisio2022_RE
 
 # Visualizzazione immagine in funzione del NIR
 # Plot a confronto
