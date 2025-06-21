@@ -16,18 +16,6 @@ library(devtools) # Da rivedere a cosa serve
 # setwd("C://nome/Downloads")
 setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 
-# Immagini True color :
-  # B4 = Red
-  # B3 = Green
-  # B2 = Blue
-# immagini False color per il calcolo NDVI
-  # B8 = NIR 
-  # B4 = Red
-  # B3 = Green
-# immagini False color per il calcolo NDRE
-  # B8 = NIR 
-  # B5 = Red Edge
-  # B2 = Blue
 
 # Importo l'immagine "True color" (RGB) per l'ANNO 2018
 # From 2018-02-01 to 2018-06-30
@@ -51,41 +39,34 @@ UDNIR_2022
 UDRedE_2022 <-rast("UD_2022_RedEdge.tif")
 UDRedE_2022 
 
+# Scelta delle bande per la visualizzazione della vegetazione
+# Immagini True color :
+  # B4 = Red
+  # B3 = Green
+  # B2 = Blue
+# Immagini False color per il calcolo NDVI
+  # B8 = NIR 
+  # B4 = Red
+  # B3 = Green
+# Immagini False color per il calcolo NDRE
+  # B8 = NIR 
+  # B5 = Red Edge
+  # B2 = Blue
 
-# Visualizzazione immagine vegetazione
 # True Color Vegetation (RGB naturale)
 # stretch="lin" : aggiusta la dimensione dell'immagine
-im.multiframe(1,2)
+im.multiframe(2,1)
 plotRGB(UD_2018, r=3, g=2, b=1, stretch="lin")
 plotRGB(UD_2022, r=3, g=2, b=1, stretch="lin")
-
 # False color vegetazion (NIR/Red/Green)
 plotRGB(UDNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
 plotRGB(UDNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
-
 # Vegetation false color (NIR/Red Edge/Blue)
 plotRGB(UDRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
 plotRGB(UDRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
 
 dev.off()
 
-# Visualizzazione immagine in funzione del NIR
-# Plot a confronto
-# Vegetazione rossa: Nir , Green, Blue
-im.multiframe(1,2)
-im.plotRGB(Udine2018, 4,2,3) 
-im.plotRGB(Udine2022, 4,2,3) 
-# Vegetazione blu: Red, Green, Nir
-im.multiframe(1,2)
-im.plotRGB(Udine2018, 1,2,4)
-im.plotRGB(Udine2022, 1,2,4)
-# Vegetazione verde: Red, Nir, Bue
-im.multiframe(1,2)
-im.plotRGB(Udine2018, 1,4,3)
-im.plotRGB(Udine2022, 1,4,3)
-
-dev.off()
------
 # Ricostruzione immagine per anno (2018 - 2022) con le bande RGBNir (B4, B3, B2, B8)
 # Anno 2018
 UD2018_br <-UD_2018[[1]]
@@ -99,6 +80,23 @@ UD2022_bg <-UD_2021[[2]]
 UD2022_bb <-UD_2021[[3]]
 UD2022_nir <-UDNIR_2021[[1]]
 Udine2022 <-c(UD2022_br, UD2022_bg, UD2022_bb, UD2022_nir)
+
+# Visualizzazione immagine in funzione del NIR
+# Plot a confronto
+# Vegetazione rossa: Nir , Green, Blue
+im.multiframe(2,1)
+im.plotRGB(Udine2018, 4,2,3) 
+im.plotRGB(Udine2022, 4,2,3) 
+# Vegetazione blu: Red, Green, Nir
+im.multiframe(2,1)
+im.plotRGB(Udine2018, 1,2,4)
+im.plotRGB(Udine2022, 1,2,4)
+# Vegetazione verde: Red, Nir, Bue
+im.multiframe(2,1)
+im.plotRGB(Udine2018, 1,4,3)
+im.plotRGB(Udine2022, 1,4,3)
+
+dev.off()
 
 # Utilizzo pacchetto viridis
 # 2018
