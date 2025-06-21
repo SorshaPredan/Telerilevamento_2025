@@ -75,10 +75,10 @@ UD2018_bb <-UD_2018[[3]]
 UD2018_nir <-UDNIR_2018[[1]]
 Udine2018 <-c(UD2018_br, UD2018_bg, UD2018_bb, UD2018_nir)
 # Anno 2022
-UD2022_br <-UD_2021[[1]]
-UD2022_bg <-UD_2021[[2]]
-UD2022_bb <-UD_2021[[3]]
-UD2022_nir <-UDNIR_2021[[1]]
+UD2022_br <-UD_2022[[1]]
+UD2022_bg <-UD_2022[[2]]
+UD2022_bb <-UD_2022[[3]]
+UD2022_nir <-UDNIR_2022[[1]]
 Udine2022 <-c(UD2022_br, UD2022_bg, UD2022_bb, UD2022_nir)
 
 # Visualizzazione immagine in funzione del NIR
