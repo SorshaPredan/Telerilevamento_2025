@@ -67,3 +67,14 @@ plotRGB(TarvisioNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
 plotRGB(TarvisioRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
 plotRGB(TarvisioRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
 
+# Ricostruzione immagine per anno (2018 - 2022) con le bande RGBNir (B4, B3, B2, B8)
+# Anno 2018
+Tr2018_br <-Tarvisio_2018[[1]]
+Tr2018_bg <-Tarvisio_2018[[2]]
+Tr2018_bb <-Tarvisio_2018[[3]]
+Tr2018_nir <-TrarvisioNIR_2018[[1]]
+Tarvisio2018 <-c(Tr2018_br, Tr2018_bg, Tr2018_bb, Tr2018_nir)
+
+
+
+
