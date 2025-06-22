@@ -4,6 +4,7 @@
 # pacchetti utilizzati (commento a cosa servono)
 library(terra)
 library(imageRy)
+library(raster)
 library(ggplot2)
 library(patchwork)
 library(cblindplot)
@@ -118,6 +119,10 @@ im.plotRGB(Tarvisio2022, 1,4,3)
 
 dev.off()
 
+# Correlazione tra immagini
+pairs(Tarvisio2018)    
+pairs(Tarvisio2022)
+
 # Utilizzo pacchetto viridis
 # Anno 2018
 plot(Tr2018_nir)
@@ -173,32 +178,64 @@ im.multiframe(2,1)
 plot(ndre2018, col=inferno (100))
 plot(ndre2022, col=inferno (100))
 
-# NDVI: phenology
-im.plotRGB(ndvi2018, 1, 2, 3)
-im.plotRGB(ndvi2022, 1, 2, 3)
-# Ridgeline plots
-im.ridgeline(ndvi2018, scale=1, palette="inferno")
-im.ridgeline(ndvi2022, scale=1, palette="inferno")
+# Calcolo delle differenze per osservare eventuali cambiamenti di vegetazione
+diff_ndvi <- ndvi2022 - ndvi2018
+diff_ndvi
+plot(diff_ndvi)
+diff_ndre <- ndre2022 - ndre2018
+diff_ndre
+plot(diff_ndre)
+
+
+# Classificazione delle immagini e calcolo della frequenza
+im.classify
+Tarvisio_2018 <-im.classify(Tarvisio2018, num_clusters=3)
+Tarvisio_2018
+# class 1 = soil (violet)
+# class 2 = forest (yellow)
+# class 3 = glacier (green)
+Tarvisio_2022 <-im.classify(Tarvisio2022, num_clusters=3)
+Tarvisio_2022
+# class 1 = soil (yellow)
+# class 2 = forest (violet)
+# class 3 = glacier (green)
+
+# Frequency year 2018
+f2018 <- freq(Tarvisio_2018)
+tot2018 <- ncell(Tarvisio_2018)
+prop2018 <- f2018 / tot2018
+perc2018 <- prop2018 * 100
+perc2018
+# percentages 2018:
+# soil = 23%
+# forest = 76%
+# glacier = 1.4%
+
+# Frequency year 2022
+f2022 <- freq(Tarvisio_2022)
+tot2022 <- ncell(Tarvisio_2022)
+prop2022 <- f2022 / tot2022
+perc2022 <- prop2022 * 100
+perc2022
+# percentages 2022:
+# soil = 17%
+# forest = 81%
+# glacier = 2.3%
+
+# Ggplot e Dataframe
+class <-c("soil", "forest", "glacier")
+y2018 <-c(22.82045, 75.77918, 1.40037)
+y2018
+y2022 <-c(16.963336, 80.782776, 2.253888)
+y2022
+DATAFRAME<-data.frame(class,y2018,y2022)
 # Anno 2018
-names(ndvi2018) <-c("02_Feb", "03_Mar", "04_Apr", "05_May", "06_Jun")
-im.ridgeline(ndvi2018, scale=1, palette="inferno")
+Anno2018 <-ggplot(DATAFRAME,aes(x=class, y=y2018, fill=class))+ 
+ geom_bar(stat="identity", color="black") + 
+ ylim(c(0, 100))
+Anno2018
 # Anno 2022
-names(ndvi2022) <-c("02_Feb", "03_Mar", "04_Apr", "05_May", "06_Jun")
-im.ridgeline(ndvi2022, scale=1, palette="inferno")
-
-# manca anche l'argomento delle mappe con ggplot vedere se farlo adesso o dopo
-
-# ARGOMENTO SUCCESSIVO
-# Matrice di grafici
-pairs(Tarvisio2018)    
-pairs(Tarvisio2022)
-
-
-# Classificazione delle immagini e calcolo frequenza
-Tarvisio2018c <-im.classify(Tarvisio2018,2)
-#
-# 
-Tarvisio2022c <-im.classify(Tarvisio2022,2)
-
-
-
+Anno2022 <-ggplot(DATAFRAME,aes(x=class, y=y2022, fill=class))+ 
+ geom_bar(stat="identity", color="black") + 
+ ylim(c(0, 100))
+Anno2022
