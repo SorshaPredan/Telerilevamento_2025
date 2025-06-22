@@ -173,7 +173,18 @@ im.multiframe(2,1)
 plot(ndre2018, col=inferno (100))
 plot(ndre2022, col=inferno (100))
 
-
+# NDVI: phenology
+im.plotRGB(ndvi2018, 1, 2, 3)
+im.plotRGB(ndvi2022, 1, 2, 3)
+# Ridgeline plots
+im.ridgeline(ndvi2018, scale=1, palette="inferno")
+im.ridgeline(ndvi2022, scale=1, palette="inferno")
+# Anno 2018
+names(ndvi2018) <-c("02_Feb", "03_Mar", "04_Apr", "05_May", "06_Jun")
+im.ridgeline(ndvi2018, scale=1, palette="inferno")
+# Anno 2022
+names(ndvi2022) <-c("02_Feb", "03_Mar", "04_Apr", "05_May", "06_Jun")
+im.ridgeline(ndvi2022, scale=1, palette="inferno")
 
 # manca anche l'argomento delle mappe con ggplot vedere se farlo adesso o dopo
 
