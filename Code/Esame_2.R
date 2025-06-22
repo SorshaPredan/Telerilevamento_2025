@@ -239,3 +239,25 @@ Anno2022 <-ggplot(DATAFRAME,aes(x=class, y=y2022, fill=class))+
  geom_bar(stat="identity", color="black") + 
  ylim(c(0, 100))
 Anno2022
+
+# Analisi multivariata
+pcimage18<-im.pca(Tarvisio2018)
+pcimage18
+pcimage22<-im.pca(Tarvisio2022)
+pcimage22
+
+
+
+# PCA workflow
+# 1. Sample
+sampleT <- spatSample(Tarvisio2018, 100)
+sampleT
+# 2. PCA
+pca <- prcomp(sampleT)
+summary(pca)
+# 3. map
+pcmap <- predict(Tarvisio2018, pca, index=c(1:3))
+
+
+
+
