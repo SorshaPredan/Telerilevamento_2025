@@ -36,7 +36,6 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 
 ## Visualizzazione della vegetazione in funzione del NIR
 Usando la funzione "im.plotRGB()" del pacchetto "imageRy", vado a sostituire il nir con le altre bande rgb per osservare come varia la visualizzazione della vegetazione presente.
-### Plot a confronto
 ### Vegetazione rossa: Nir , Green, Blue
 Nir su red: questo comporta una visualizzazione che evidenzia le caratteristiche della vegetazione poichè la vegetazione riflette molto di più nel nir rispetto alle altre superfici, andando a facilitarne l'identificazione. Si può anche capirne le condizioni di salute poichè più queste sono in buona salute, più il nir viene riflesso, e più l'immagine sarà luminosa.
 ![image](https://github.com/user-attachments/assets/ec45f47e-2738-422b-b601-0ec6086f201c)
