@@ -42,6 +42,7 @@ Nir su red: questo comporta una visualizzazione che evidenzia le caratteristiche
 ![image](https://github.com/user-attachments/assets/ec45f47e-2738-422b-b601-0ec6086f201c)
 ### Vegetazione blu: Red, Green, Nir
 Nir sul blu: la vegetazione sarà visivamente di colore blu. Inoltre, il suolo diventerà di colore giallo andando a fornire un ottimo contrasto tra vegetazione e suolo.
+
 ![image](https://github.com/user-attachments/assets/0a56033a-6390-44b2-a21b-fcf933144eef)
 ## Vegetazione verde: Red, Nir, Bue
 Nir sul green: la vegetazione sarà visivamente di colore verde, dando un aspetto più naturale all’immagine.
