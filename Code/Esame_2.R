@@ -193,10 +193,13 @@ summary(values(ndvi2022))
 im.multiframe(2,1)
 plot(ndvi2018, col=inferno (100), main="NDVI - 2018")
 plot(ndvi2022, col=inferno (100), main="NDVI - 2022")
+dev.off()
 
 # Visualizzazione statistica attraverso un istogramma
 hist(ndvi2018, main="Histogram NDVI 2018", col="forestgreen")
 hist(ndvi2022, main="Histogram NDVI 2022", col="darkred")
+
+dev.off()
 
 # Calculate NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
 # L'NDRE aiuta a individuare stress o alterazioni fisiologiche nelle piante prima che siano visibili ad occhio nudo, permettendo interventi più tempestivi. 
@@ -216,12 +219,15 @@ plot(ndre2022)
 summary(values(ndre2018))
 summary(values(ndre2022))
 im.multiframe(2,1)
-plot(ndre2018, col=inferno (100), main="NDRE - 2018"))
-plot(ndre2022, col=inferno (100), main="NDRE - 2022"))
+plot(ndre2018, col=inferno (100), main="NDRE - 2018")
+plot(ndre2022, col=inferno (100), main="NDRE - 2022")
+dev.of()
 
 # Visualizzazione statistica attraverso un istogramma
 hist(ndre2018, main="Histogram NDRE 2018", col="forestgreen")
 hist(ndre2022, main="Histogram NDRE 2022", col="darkred")
+
+dev.off() 
 
 ## Calcolo delle differenze tra i due anni considerati del NDVI e NDRE per osservare eventuali cambiamenti di vegetazione
 # Valori positivi stanno ad indicare una maggiore presenza di vegetazione
@@ -230,6 +236,10 @@ diff_ndvi
 plot(diff_ndvi, col=inferno (100), main="NDVI Difference (2022 - 2018)")
 diff_ndre <- ndre2022 - ndre2018
 diff_ndre
+plot(diff_ndre, col=inferno (100), main="NDRE Difference (2022 - 2018)")
+
+im.multiframe(2,1)
+plot(diff_ndvi, col=inferno (100), main="NDVI Difference (2022 - 2018)")
 plot(diff_ndre, col=inferno (100), main="NDRE Difference (2022 - 2018)")
 
 # Classificazione delle differenze per evidenziare cambiamenti notevoli di vegetazione
@@ -313,17 +323,21 @@ Anno2022 <-ggplot(DATAFRAME, aes(x=class, y=y2022, fill=class))+
  ylim(c(0, 100))
 Anno2022
 
+dev.off()
+
 # Creazione di un Plot Comparativo tra i due anni così da avere un grafico a barre affiancate
-DATAFRAME_long( <- pivot_longer(DATAFRAME, cols = c("y2018", "y2022"), 
+library(tidyr)
+DATAFRAME_long <- pivot_longer(DATAFRAME, cols = c("y2018", "y2022"), 
                                 names_to = "year", values_to = "percent")
 # Plot comparativo
-Ggplot(DATAFRAME_long, aes(x=class, y=percent, fill=year))+ 
+ggplot(DATAFRAME_long, aes(x=class, y=percent, fill=year))+ 
  geom_bar(stat="identity", position=position_dodge(width=0.8), color="black") + 
- ylim(c(0, 100)) +
- labs(title="Distribuzione percentuale classi (2018 vs 2022)"),
+ ylim(0, 100) +
+ labs(title="Distribuzione percentuale classi (2018 vs 2022)",
      x="Classe", y="Percentuale (%)", fill="Anno") +
  theme_minimal()
 
+dev.off()
                
 ## Classificazione e calcolo della frequenza con banda del Red Edge
 im.classify
