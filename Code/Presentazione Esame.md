@@ -1,6 +1,12 @@
-# Reporting multitemporal analysis in R
+# La vegetazione di Tarvisio
 
-First of all, we should import an image by:
+Lo scopo del lavoro è quello di osservare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, a causa di stress dovuti a cambiamenti ambientali o patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
+Sono stati presi in considerazione due anni nel periodo che si estende dal 01 febbraio al 30 giugno (2018 - 2022). 
+Le immagini scelte sono state prese dal sito "Copernicus Browser" utilizzando InstrumentSentinel-2 MSI: Multispectral Instrument
+- https://developers.google.com/earth-engine/datasets/catalog/sentinel?hl=it
+- https://code.earthengine.google.com/?scriptPath=Examples%3ADatasets%2FCOPERNICUS%2FCOPERNICUS_S2_SR_HARMONIZED&hl=it
+
+
 
 ``` r
 im.list() # make a list
