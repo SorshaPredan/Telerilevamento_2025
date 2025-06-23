@@ -24,8 +24,8 @@ Windowds users: C://comp/Downloads
 setwd("C://nome/Downloads")
 setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 ```
--- L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
---L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
+- L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
+- L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 
 ### True Color Vegetation (RGB naturale)
 ![image](https://github.com/user-attachments/assets/a506d472-ce8e-4245-a065-22d3fbd7432a)
