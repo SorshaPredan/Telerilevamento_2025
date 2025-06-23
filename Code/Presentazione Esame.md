@@ -1,16 +1,19 @@
-# La vegetazione di Tarvisio
+## La vegetazione di Tarvisio
 
-Lo scopo del lavoro è quello di osservare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, a causa di stress dovuti a cambiamenti ambientali o patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
+L'obiettivo dell'analisi studio è di osservare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, a causa di stress dovuti a cambiamenti ambientali o patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
 Sono stati presi in considerazione due anni nel periodo che si estende dal 01 febbraio al 30 giugno (2018 - 2022). 
 Le immagini scelte sono state prese dal sito "Copernicus Browser" utilizzando InstrumentSentinel-2 MSI: Multispectral Instrument
 - https://developers.google.com/earth-engine/datasets/catalog/sentinel?hl=it
 - https://code.earthengine.google.com/?scriptPath=Examples%3ADatasets%2FCOPERNICUS%2FCOPERNICUS_S2_SR_HARMONIZED&hl=it
 
-
-
 ``` r
-im.list() # make a list
-gr = im.import("greenland") # to import the image
+library(terra)       # Gestione e analisi raster
+library(raster)      # Compatibilità con vecchi script raster
+library(ggplot2)     # Grafici e visualizzazioni
+library(patchwork)   # Composizione di più grafici
+library(viridis)     # Palette di colori accessibili         
+                     # https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+library(imageRy)     # Pacchetto in R con specializzazione per analisi geospaziale e manipolazione di dati raster
 ```
 
 Then, we might calculate the difference of values of two images
