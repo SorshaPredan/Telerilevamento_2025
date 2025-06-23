@@ -1,4 +1,4 @@
-## La vegetazione di Tarvisio
+# La vegetazione di Tarvisio
 
 L'obiettivo dell'analisi studio è di osservare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, a causa di stress dovuti a cambiamenti ambientali o patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
 Sono stati presi in considerazione due anni nel periodo che si estende dal 01 febbraio al 30 giugno (2018 - 2022). 
@@ -15,6 +15,29 @@ library(viridis)     # Palette di colori accessibili
                      # https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
 library(imageRy)     # Pacchetto in R con specializzazione per analisi geospaziale e manipolazione di dati raster
 ```
+## Importazione Immagini
+Le immagini selezionate coprono la zona di Malborghetto, Camporosso in Valcanale e Tarvisio, aree montuose maggiormente colpite dalla processionaria e dal bostrico.
+``` r
+Exporting data
+\ change direction
+Windowds users: C://comp/Downloads
+setwd("C://nome/Downloads")
+setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
+```
+L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
+L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
+
+## True Color Vegetation (RGB naturale)
+stretch="lin" : aggiusta la dimensione dell'immagine
+im.multiframe(2,1)
+plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin")
+plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin")
+## False color vegetazion (NIR/Red/Green)
+plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
+plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
+## Vegetation false color (NIR/Red Edge/Blue)
+plotRGB(TrRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
+plotRGB(TrRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
 
 Then, we might calculate the difference of values of two images
 
