@@ -30,8 +30,8 @@ library(viridis)
 # Per i due anni (2018 - 2022) vengono fornite 3 immagini satellite "sentinel-2”: una con i colori veri "True Color" aventi le bande B4, B3 e B2 (Red, Green, Blue: RGB); 
 una in falsi colori "False Color" aventi le bande B8, B4 e B3 (NIR, Red, Green: Vicino infrarosso e 2 delle precedenti bande); una in falsi colori "False Color" aventi le bande B8, B5 e B2 (NIR, Red Edge, Blue)
 # Lo scopo da portare a termine è quello di prelevare la banda b8, cioè quella del nir, dalle immagini in falsi colori per importarla in un unico oggetto assieme alle altre bande b4, b3 e b2. 
-Voglio quindi costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
-Voglio quindi costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
+# L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
+# L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 # Exporting data
 # \ change direction
 # Windowds users: C://comp/Downloads
@@ -182,11 +182,9 @@ im.multiframe(2,1)
 plot(dvi2018, col=inferno (100))
 plot(dvi2022, col=inferno (100))
 
-
 # Calculate NDVI: indice di differenza normalizzata delle vegetazioni impiegando i valori delle bande rosse e infrarosse delle immagini.
 # Viene calcolata con la formula NDVI = (nir-red/nir+red) che mi permette di andare a confrontare i valori tra immagini che hanno una risoluzione radiometrica diversa
-# Interpretazione dati relativi a NDVI: valori alti, vicini a +1 = vegetazione densa e sana; valori vicini 0= vegetazione scarsa, neve/ghiaccio o suolo nudo; 
-valori bassi vicini a -1 = superfici non coperte da vegetazione o urbanizzate come costruzioni o strade.
+# Interpretazione dati relativi a NDVI: valori alti, vicini a +1 = vegetazione densa e sana; valori vicini 0= vegetazione scarsa, neve/ghiaccio o suolo nudo; valori bassi vicini a -1 = superfici non coperte da vegetazione o urbanizzate come costruzioni o strade.
 # Anno 2018
 ndvi2018 = (Tr2018_nir - Tr2018_br) / (Tr2018_nir + Tr2018_br)
 ndvi2018
@@ -201,7 +199,10 @@ im.multiframe(2,1)
 plot(ndvi2018, col=inferno (100))
 plot(ndvi2022, col=inferno (100))
 
-# Calculate NDRE
+# Calculate NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
+# L'NDRE aiuta a individuare stress o alterazioni fisiologiche nelle piante prima che siano visibili ad occhio nudo, permettendo interventi più tempestivi. 
+# È particolarmente utile in ambienti agricoli o forestali dove la diagnosi precoce è fondamentale per la gestione delle malattie.
+# Interpretazione dati relativi a NDRE: valori elevati (vicino a +1) indicano una buona presenza di clorofilla e, quindi, una buona salute vegetale; mentre valori bassi (vicino a 0 o negativi) possono indicare stress, carenze di nutrienti, malattie o altre condizioni che riducono la quantità di clorofilla.
 # Anno 2018
 ndre2018 = (Tr2018_bnir - Tr2018_bRE) / (Tr2018_bnir + Tr2018_bRE)
 ndre2018
@@ -222,7 +223,6 @@ plot(diff_ndvi)
 diff_ndre <- ndre2022 - ndre2018
 diff_ndre
 plot(diff_ndre)
-
 
 ### CLASSIFICAZIONE DELLE IMMAGINI E CALCOLO DELLA FREQUENZA
 # Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
@@ -333,26 +333,42 @@ perc2022_RE
 # forest = 80%
 # glacier = 2.3%
 
+## Ggplot e Dataframe
+class2 <-c("soil", "forest", "glacier")
+y2018_RE <-c(24.368530, 74.208172, 1.423299)
+y2018_RE
+y2022_RE <-c(17.514033, 80.202510, 2.283457)
+y2022_RE
+DATAFRAME2<-data.frame(class2,y2018_RE,y2022_RE)
+# Anno 2018
+Anno2018_RE <-ggplot(DATAFRAME2,aes(x=class2, y=y2018_RE, fill=class2))+ 
+ geom_bar(stat="identity", color="black") + 
+ ylim(c(0, 100))
+Anno2018_RE
+# Anno 2022
+Anno2022_RE <-ggplot(DATAFRAME2,aes(x=class2, y=y2022_RE, fill=class2))+ 
+ geom_bar(stat="identity", color="black") + 
+ ylim(c(0, 100))
+Anno2022_RE
 
+### TIMESERIES
+# Si va a visualizzare la differenza pixel per pixel fra le 2 immagini usando una palette di colori per evidenziare le variazioni.
+# Si osservano le differenze esistenti tra le immagini in termini di intensità dei pixel a scopo di ottenere visivamente i cambiamenti della zona d’interesse.
+# Calcolo la differenza tra le immagini della banda del Nir. 
+# Creo una palette di colori che va dal blu al giallo al rosso con 100 gradazioni per avere più fluidità nei passaggi da un colore all’altro. 
+ #I pixel blu indicano una minore intensità nella prima immagine rispetto alla seconda, cioè una probabile diminuzione dell'intensità del nir e quindi una probabile riduzione della vegetazione.
+ #I pixel gialli indicano invece una assenza di intensità.
+ #I pixel rossi indicano poi una maggiore intensità nella prima immagine rispetto alla seconda, ovvero un aumento dell'intensità del nir e quindi una crescita della vegetazione.
+diffnir1822<-Tarvisio2018[[4]] - Tarvisio2022[[4]]
+diffnir1822
+diffnir2218<-Tarvisio2022[[4]] - Tarvisio2018[[4]]
+diffnir2218
+cl <- colorRampPalette(c("blue", "yellow", "red"))(100)
 
-# Analisi multivariata
-pcimage18<-im.pca(Tarvisio2018)
-pcimage18
-pcimage22<-im.pca(Tarvisio2022)
-pcimage22
+im.multiframe(2,1)
+plot(diffnir1822, col=cl)
+plot(diffnir1822, col=cl)
 
-
-
-# PCA workflow
-# 1. Sample
-sampleT <- spatSample(Tarvisio2018, 100)
-sampleT
-# 2. PCA
-pca <- prcomp(sampleT)
-summary(pca)
-# 3. map
-pcmap <- predict(Tarvisio2018, pca, index=c(1:3))
-
-
-
-
+### CONCLUSIONE
+# I valori di DVI dei due anni (2018 e 2022) mostrano che valori più vicini a 0 o negativi indicano aree con poca o nessuna vegetazione, o superfici come suolo nudo, ghiaccio o aree urbanizzate. Al contrario, valori più alti (vicini a 0.7) indicano vegetazione più densa e sana, che riflette molto nell'infrarosso e assorbe bene il rosso.
+# La somiglianza tra i range del 2018 e del 2022 suggerisce che la distribuzione generale della vegetazione non è cambiata drasticamente tra i due anni. 
