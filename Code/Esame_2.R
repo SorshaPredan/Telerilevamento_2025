@@ -189,11 +189,13 @@ plot(dvi2022, col=inferno (100))
 ndvi2018 = (Tr2018_nir - Tr2018_br) / (Tr2018_nir + Tr2018_br)
 ndvi2018
 # ndvi2018 = dvi2018 / (Tr2018_nir + Tr2018_br)
+# I risultati del 2018 sono: min -0.45, max 0.91
 plot(ndvi2018)
 # Anno 2022
 ndvi2022 = (Tr2022_nir - Tr2022_br) / (Tr2022_nir + Tr2022_br)
 ndvi2022
 # ndvi2022 = dvi2022 / (Tr2022_nir + Tr2022_br)
+# i risultati del 2022 sono: min -0.42, max 0.99
 plot(ndvi2022)
 im.multiframe(2,1)
 plot(ndvi2018, col=inferno (100))
@@ -206,10 +208,12 @@ plot(ndvi2022, col=inferno (100))
 # Anno 2018
 ndre2018 = (Tr2018_bnir - Tr2018_bRE) / (Tr2018_bnir + Tr2018_bRE)
 ndre2018
+# I risultati del 2018 sono: min -0.57, max 0.72
 plot(ndre2018)
 # Anno 2022
 ndre2022 = (Tr2022_bnir - Tr2022_bRE) / (Tr2022_bnir + Tr2022_bRE)
 ndre2022
+# I risultati del 2022 sono: min -0.50, max 0.86
 plot(ndre2022)
 im.multiframe(2,1)
 plot(ndre2018, col=inferno (100))
