@@ -28,7 +28,6 @@ L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, 
 L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 
 ## True Color Vegetation (RGB naturale)
-stretch="lin" : aggiusta la dimensione dell'immagine
 im.multiframe(2,1)
 plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin")
 plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin")
@@ -36,8 +35,8 @@ plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin")
 plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
 plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
 ## Vegetation false color (NIR/Red Edge/Blue)
-plotRGB(TrRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
-plotRGB(TrRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
+![image](https://github.com/user-attachments/assets/480a91fe-fd66-4082-917d-5c685950ff4e)
+
 
 Then, we might calculate the difference of values of two images
 
