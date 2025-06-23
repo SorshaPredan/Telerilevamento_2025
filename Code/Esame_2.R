@@ -376,3 +376,7 @@ plot(diffnir1822, col=cl)
 ### CONCLUSIONE
 # I valori di DVI dei due anni (2018 e 2022) mostrano che valori più vicini a 0 o negativi indicano aree con poca o nessuna vegetazione, o superfici come suolo nudo, ghiaccio o aree urbanizzate. Al contrario, valori più alti (vicini a 0.7) indicano vegetazione più densa e sana, che riflette molto nell'infrarosso e assorbe bene il rosso.
 # La somiglianza tra i range del 2018 e del 2022 suggerisce che la distribuzione generale della vegetazione non è cambiata drasticamente tra i due anni. 
+# Anzi nonostante la zona sia soggetta a numerose patologie vegetali citate in precedenza, 
++ i dati analizzati indicano che tra il 2018 e il 2022 si è verificato un leggero miglioramento nella condizione della vegetazione nell’area studiata
++ come suggeriscono gli aumenti nei valori massimi degli indici NDVI e NDRE.
+# La distribuzione spaziale delle variabili evidenzia come alcune aree specifiche hanno maggiore attività vegetativa nel 2022 rispetto al 2018.
