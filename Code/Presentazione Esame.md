@@ -27,14 +27,11 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
 L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 
-## True Color Vegetation (RGB naturale)
-im.multiframe(2,1)
-plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin")
-plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin")
-## False color vegetazion (NIR/Red/Green)
-plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
-plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
-## Vegetation false color (NIR/Red Edge/Blue)
+### True Color Vegetation (RGB naturale)
+![image](https://github.com/user-attachments/assets/a506d472-ce8e-4245-a065-22d3fbd7432a)
+### False color vegetazion (NIR/Red/Green)
+![image](https://github.com/user-attachments/assets/6e7d0d4b-284c-4bc2-bcb4-3ee248fca3bc)
+### Vegetation false color (NIR/Red Edge/Blue)
 ![image](https://github.com/user-attachments/assets/480a91fe-fd66-4082-917d-5c685950ff4e)
 
 
