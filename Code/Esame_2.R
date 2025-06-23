@@ -5,31 +5,21 @@
 # Le immagini scelte sono state prese dal sito "Copernicus Browser" utilizzando InstrumentSentinel-2 MSI: Multispectral Instrument
 # https://developers.google.com/earth-engine/datasets/catalog/sentinel?hl=it
 # https://code.earthengine.google.com/?scriptPath=Examples%3ADatasets%2FCOPERNICUS%2FCOPERNICUS_S2_SR_HARMONIZED&hl=it
-# Il codice è stato scritto impiegando i seguenti pacchetti:
- #Pacchetto in R con specializzazione per analisi geospaziale e manipolazione di dati raster.
-library(terra) 
-library(raster)
- #Pacchetto in R per gestione dati raster, visualizzazione, importazione e modificazione delle immagini.
- #Facilita condivisione di immagini.
-library(imageRy)
- #Pacchetto in R per creazione di grafici statistici.
-library(ggplot2) 
- #Pacchetto in R per organizzazione e personalizzazione della disposizione di più grafici insieme.
-library(patchwork)
- #Pacchetto in R progettato per creare grafici di sensibilità e analisi di potenza, spesso utilizzati in contesti di analisi statistica.
-library(cblindplot)
- #Pacchetto progettato per installare pacchetti direttamente da repository come GitHub.
-library(devtools) 
- #Viridis colors: Pacchetto in R usato per assegnare alle immagini rappresentate delle palette di colore
- #Utile per usare palette distinguibili anche dalle persone daltoniche.
- #https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
-library(viridis)
+# Il codice è stato scritto impiegando i seguenti pacchetti per analisi geospaziale e visualizzazione raster
+library(terra)       # Gestione e analisi raster
+library(raster)      # Compatibilità con vecchi script raster
+library(ggplot2)     # Grafici e visualizzazioni
+library(patchwork)   # Composizione di più grafici
+library(viridis)     # Palette di colori accessibili         
+                     #https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
+library(imageRy)     #Pacchetto in R con specializzazione per analisi geospaziale e manipolazione di dati raster.
 
 ### IMPORTAZIONE IMMAGINI
-# Le immagini selezionate comprendono la zona di Malborghetto, Camporosso in Valcanale e Tarvisio, aree montuose maggiormente colpite dalla processionaria e dal bostrico.
-# Per i due anni (2018 - 2022) vengono fornite 3 immagini satellite "sentinel-2”: una con i colori veri "True Color" aventi le bande B4, B3 e B2 (Red, Green, Blue: RGB); 
-una in falsi colori "False Color" aventi le bande B8, B4 e B3 (NIR, Red, Green: Vicino infrarosso e 2 delle precedenti bande); una in falsi colori "False Color" aventi le bande B8, B5 e B2 (NIR, Red Edge, Blue)
-# Lo scopo da portare a termine è quello di prelevare la banda b8, cioè quella del nir, dalle immagini in falsi colori per importarla in un unico oggetto assieme alle altre bande b4, b3 e b2. 
+# Le immagini selezionate coprono la zona di Malborghetto, Camporosso in Valcanale e Tarvisio, aree montuose maggiormente colpite dalla processionaria e dal bostrico.
+# Per ciascun anno (2018 - 2022) sono state utilizzate 3 immagini satellite "Sentinel-2”: 
+  # - True Color: con le bande B4, B3 e B2 (Red, Green, Blue: RGB); 
+  # - False Color: con le bande B8, B4 e B3 (NIR, Red, Green); 
+  # - False Color: con le bande B8, B5 e B2 (NIR, Red Edge, Blue).
 # L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
 # L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 # Exporting data
@@ -179,8 +169,8 @@ plot(dvi2022)
 
 # Plot a confronto con il pacchetto viridis
 im.multiframe(2,1)
-plot(dvi2018, col=inferno (100))
-plot(dvi2022, col=inferno (100))
+plot(dvi2018, col=inferno (100), main="DVI - 2018")
+plot(dvi2022, col=inferno (100), main="DVI - 2022")
 
 # Calculate NDVI: indice di differenza normalizzata delle vegetazioni impiegando i valori delle bande rosse e infrarosse delle immagini.
 # Viene calcolata con la formula NDVI = (nir-red/nir+red) che mi permette di andare a confrontare i valori tra immagini che hanno una risoluzione radiometrica diversa
@@ -197,9 +187,16 @@ ndvi2022
 # ndvi2022 = dvi2022 / (Tr2022_nir + Tr2022_br)
 # i risultati del 2022 sono: min -0.42, max 0.99
 plot(ndvi2022)
+
+summary(values(ndvi2018))
+summary(values(ndvi2022))
 im.multiframe(2,1)
-plot(ndvi2018, col=inferno (100))
-plot(ndvi2022, col=inferno (100))
+plot(ndvi2018, col=inferno (100), main="NDVI - 2018")
+plot(ndvi2022, col=inferno (100), main="NDVI - 2022")
+
+# Visualizzazione statistica attraverso un istogramma
+hist(ndvi2018, main="Histogram NDVI 2018", col="forestgreen")
+hist(ndvi2022, main="Histogram NDVI 2022", col="darkred")
 
 # Calculate NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
 # L'NDRE aiuta a individuare stress o alterazioni fisiologiche nelle piante prima che siano visibili ad occhio nudo, permettendo interventi più tempestivi. 
@@ -215,18 +212,33 @@ ndre2022 = (Tr2022_bnir - Tr2022_bRE) / (Tr2022_bnir + Tr2022_bRE)
 ndre2022
 # I risultati del 2022 sono: min -0.50, max 0.86
 plot(ndre2022)
+
+summary(values(ndre2018))
+summary(values(ndre2022))
 im.multiframe(2,1)
-plot(ndre2018, col=inferno (100))
-plot(ndre2022, col=inferno (100))
+plot(ndre2018, col=inferno (100), main="NDRE - 2018"))
+plot(ndre2022, col=inferno (100), main="NDRE - 2022"))
+
+# Visualizzazione statistica attraverso un istogramma
+hist(ndre2018, main="Histogram NDRE 2018", col="forestgreen")
+hist(ndre2022, main="Histogram NDRE 2022", col="darkred")
 
 ## Calcolo delle differenze tra i due anni considerati del NDVI e NDRE per osservare eventuali cambiamenti di vegetazione
 # Valori positivi stanno ad indicare una maggiore presenza di vegetazione
 diff_ndvi <- ndvi2022 - ndvi2018
 diff_ndvi
-plot(diff_ndvi)
+plot(diff_ndvi, col=inferno (100), main="NDVI Difference (2022 - 2018)")
 diff_ndre <- ndre2022 - ndre2018
 diff_ndre
-plot(diff_ndre)
+plot(diff_ndre, col=inferno (100), main="NDRE Difference (2022 - 2018)")
+
+# Classificazione delle differenze per evidenziare cambiamenti notevoli di vegetazione
+ndvi_change_class <- classify(diff_ndvi, rbind(
+ c(-Inf, -0.2, 1),   # forte diminuzione
+ c(-0.2, 0.2, 2),    # cambiamento minimo 
+ c(0.2, Inf, 3)      # forte aumento
+))
+plot(ndvi_change_class, col=c("red", "yellow", "blue"), main="Classificazione cambiamento NDVI")
 
 ### CLASSIFICAZIONE DELLE IMMAGINI E CALCOLO DELLA FREQUENZA
 # Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
@@ -296,11 +308,23 @@ Anno2018 <-ggplot(DATAFRAME,aes(x=class, y=y2018, fill=class))+
  ylim(c(0, 100))
 Anno2018
 # Anno 2022
-Anno2022 <-ggplot(DATAFRAME,aes(x=class, y=y2022, fill=class))+ 
+Anno2022 <-ggplot(DATAFRAME, aes(x=class, y=y2022, fill=class))+ 
  geom_bar(stat="identity", color="black") + 
  ylim(c(0, 100))
 Anno2022
 
+# Creazione di un Plot Comparativo tra i due anni così da avere un grafico a barre affiancate
+DATAFRAME_long( <- pivot_longer(DATAFRAME, cols = c("y2018", "y2022"), 
+                                names_to = "year", values_to = "percent")
+# Plot comparativo
+Ggplot(DATAFRAME_long, aes(x=class, y=percent, fill=year))+ 
+ geom_bar(stat="identity", position=position_dodge(width=0.8), color="black") + 
+ ylim(c(0, 100)) +
+ labs(title="Distribuzione percentuale classi (2018 vs 2022)"),
+     x="Classe", y="Percentuale (%)", fill="Anno") +
+ theme_minimal()
+
+               
 ## Classificazione e calcolo della frequenza con banda del Red Edge
 im.classify
 # Anno 2018
@@ -370,13 +394,16 @@ diffnir2218
 cl <- colorRampPalette(c("blue", "yellow", "red"))(100)
 
 im.multiframe(2,1)
-plot(diffnir1822, col=cl)
-plot(diffnir1822, col=cl)
+plot(diffnir1822, col=cl, main="NIR: 2018 - 2022")
+plot(diffnir1822, col=cl, main="NIR: 2022 - 2018")
 
 ### CONCLUSIONE
-# I valori di DVI dei due anni (2018 e 2022) mostrano che valori più vicini a 0 o negativi indicano aree con poca o nessuna vegetazione, o superfici come suolo nudo, ghiaccio o aree urbanizzate. Al contrario, valori più alti (vicini a 0.7) indicano vegetazione più densa e sana, che riflette molto nell'infrarosso e assorbe bene il rosso.
-# La somiglianza tra i range del 2018 e del 2022 suggerisce che la distribuzione generale della vegetazione non è cambiata drasticamente tra i due anni. 
-# Anzi nonostante la zona sia soggetta a numerose patologie vegetali citate in precedenza, 
-+ i dati analizzati indicano che tra il 2018 e il 2022 si è verificato un leggero miglioramento nella condizione della vegetazione nell’area studiata
-+ come suggeriscono gli aumenti nei valori massimi degli indici NDVI e NDRE.
-# La distribuzione spaziale delle variabili evidenzia come alcune aree specifiche hanno maggiore attività vegetativa nel 2022 rispetto al 2018.
+# I valori degli indici di vegetazione DVI, NDVI e NDRE analizzati per i due anni 2018 e 2022 mostrano una situazione in generale stabile, con tendenze di miglioramento nella salute vegetativa localizzato.
+# L'indice DVI evidenzia come in entrambi gli anni i valori variano da negativi a prossimi allo zero, indicativi di suolo nudo, presenza di ghiaccio o aree urbanizzate)
+# fino a circa 0.7, che denota la presenza di vegetazione densa e sana. 
+# Ciò significa che la distribuzione generale della vegetazione non ha subito drastici cambiamenti tra il 2018 e il 2022.
+# Tuttavia sia l'indice NDVI che NDRE evidenziano un leggero incremento dei valori massimi nel 2022, indicando un miglior assorbimento nella banda del rosso, un aumento della riflettanza nel vicino infrarosso e nel Red Edge;
+# quindi una maggiore attività fotosintetica e miglior stato fisiologico della vegetazione. 
+# In sintesi, nonostante la presenza di potenziali patologie vegetali, l'analisi studio indica che tra il 2018 e il 2022 si è verificato un lieve miglioramento della vegetazione sia in termini di quantità (copertura) che qualità (salute fisiologica).
+
+# FINE
