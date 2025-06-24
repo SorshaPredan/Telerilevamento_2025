@@ -28,24 +28,31 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 - L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
 
 ### True Color Vegetation (RGB naturale)
-![image](https://github.com/user-attachments/assets/a506d472-ce8e-4245-a065-22d3fbd7432a)
+![image](https://github.com/user-attachments/assets/ede98edf-3816-4b24-b862-148559230dbc)
 ### False color vegetazion (NIR/Red/Green)
-![image](https://github.com/user-attachments/assets/6e7d0d4b-284c-4bc2-bcb4-3ee248fca3bc)
+![image](https://github.com/user-attachments/assets/def9c72b-b7e0-4960-ab19-f3e01c894efc)
 ### False color vegetation (NIR/Red Edge/Blue)
-![image](https://github.com/user-attachments/assets/480a91fe-fd66-4082-917d-5c685950ff4e)
+![image](https://github.com/user-attachments/assets/19aa9a6d-758d-4713-bf76-fa503ce98d82)
 
 ## Visualizzazione della vegetazione in funzione del NIR
 Usando la funzione "im.plotRGB()" del pacchetto "imageRy", vado a sostituire il nir con le altre bande rgb per osservare come varia la visualizzazione della vegetazione presente.
 ### Vegetazione rossa: Nir , Green, Blue
 Nir su red: questo comporta una visualizzazione che evidenzia le caratteristiche della vegetazione poichè la vegetazione riflette molto di più nel nir rispetto alle altre superfici, andando a facilitarne l'identificazione. Si può anche capirne le condizioni di salute poichè più queste sono in buona salute, più il nir viene riflesso, e più l'immagine sarà luminosa.
+Figura 1: Vegetazione 2018
+Figura 2: Vegetazione 2022
 
 ![image](https://github.com/user-attachments/assets/ec45f47e-2738-422b-b601-0ec6086f201c)
 ### Vegetazione blu: Red, Green, Nir
 Nir sul blu: la vegetazione sarà visivamente di colore blu. Inoltre, il suolo diventerà di colore giallo andando a fornire un ottimo contrasto tra vegetazione e suolo.
+Figura 1: Vegetazione 2018
+Figura 2: Vegetazione 2022
 
 ![image](https://github.com/user-attachments/assets/0a56033a-6390-44b2-a21b-fcf933144eef)
 ## Vegetazione verde: Red, Nir, Bue
 Nir sul green: la vegetazione sarà visivamente di colore verde, dando un aspetto più naturale all’immagine.
+Figura 1: Vegetazione 2018
+Figura 2: Vegetazione 2022
+
 ![image](https://github.com/user-attachments/assets/559a7691-b25a-48e8-9eb4-a8e941763541)
 
 ## Calcolo dell'Indice di variabilità: DVI e NDVI e NDRE
@@ -79,7 +86,7 @@ I risultati del 2022 sono: min -0.42, max 0.99
 ```
 ![image](https://github.com/user-attachments/assets/bd11476d-51bd-4921-a7a6-c171e1735034)
 
-### Calculate NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
+### Calcolo NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
 L'NDRE aiuta a individuare stress o alterazioni fisiologiche nelle piante prima che siano visibili ad occhio nudo, permettendo interventi più tempestivi.
 ``` r
 ### Calculate ndre for 2018
@@ -92,6 +99,42 @@ ndre2022
 I risultati del 2022 sono: min -0.50, max 0.86
 ```
 ![image](https://github.com/user-attachments/assets/9921bd55-2fc2-4ddd-81cf-9dbe3bef05e5)
+
+## Classificazione delle immagini e calcolo della frequenza
+Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
+NOTA: la funzione prende i pixel dell'immagine in maniera randomica e pertanto i colori dei cluster delle classificazioni possono risultare diversi a ogni visualizzazione.
+``` r
+im.classify
+# Anno 2018
+Tarvisio_2018 <-im.classify(Tarvisio2018, num_clusters=3)
+Tarvisio_2018
+f2018 <- freq(Tarvisio_2018)
+tot2018 <- ncell(Tarvisio_2018)
+prop2018 <- f2018 / tot2018
+perc2018 <- prop2018 * 100
+perc2018
+# percentages 2018:
+# soil = 23%
+# forest = 76%
+# glacier = 1.4%
+```
+![image](https://github.com/user-attachments/assets/a864eda3-e2dc-40a5-9fec-ae936aae27f7)
+
+``` r
+# Anno 2022
+Tarvisio_2022 <-im.classify(Tarvisio2022, num_clusters=3)
+Tarvisio_2022
+f2022 <- freq(Tarvisio_2022)
+tot2022 <- ncell(Tarvisio_2022)
+prop2022 <- f2022 / tot2022
+perc2022 <- prop2022 * 100
+perc2022
+# percentages 2022:
+# soil = 17%
+# forest = 81%
+# glacier = 2.3%
+```
+![image](https://github.com/user-attachments/assets/9700bb1f-6b2a-4cbd-81eb-34f6679d6810)
 
 ## Ggplot e Dataframe 
 Costruisco un dataframe con al suo interno le classi e gli oggetti "y2018", "y2022", con al loro interno le percentuali della classificazione calcolate in precedenza.
