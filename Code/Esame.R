@@ -411,7 +411,7 @@ im.multiframe(2,1)
 plot(diffnir1822, col=cl, main="NIR: 2018 - 2022")
 plot(diffnir1822, col=cl, main="NIR: 2022 - 2018")
 
-### CONCLUSIONE
+### CONCLUSIONI
 # I valori degli indici di vegetazione DVI, NDVI e NDRE analizzati per i due anni 2018 e 2022 mostrano una situazione in generale stabile. 
 # L'indice DVI evidenzia come in entrambi gli anni i valori variano da negativi a prossimi allo zero, indicativi di suolo nudo, presenza di ghiaccio o aree urbanizzate
 # fino a circa 0.7, che denota la presenza di vegetazione densa e sana. 
