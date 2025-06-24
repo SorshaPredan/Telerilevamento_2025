@@ -162,7 +162,7 @@ ggplot(DATAFRAME_long, aes(x=class, y=percent, fill=year))+
 ```
 ![image](https://github.com/user-attachments/assets/efb23b17-854a-40dd-8f46-8456e786ea8c)
 
-## Conclusione
+## Conclusioni
 I valori degli indici di vegetazione DVI, NDVI e NDRE analizzati per i due anni 2018 e 2022 mostrano una situazione in generale stabile.
 L'indice DVI evidenzia come in entrambi gli anni i valori variano da negativi a prossimi allo zero, indicativi di suolo nudo, presenza di ghiaccio o aree urbanizzate, fino a circa 0.7, che denota la presenza di vegetazione densa e sana. 
 Ciò significa che la distribuzione generale della vegetazione non ha subito drastici cambiamenti tra il 2018 e il 2022.
