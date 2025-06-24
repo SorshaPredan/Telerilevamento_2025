@@ -67,14 +67,14 @@ TrRedE_2022
 # True Color Vegetation (RGB naturale)
 # stretch="lin" : aggiusta la dimensione dell'immagine
 im.multiframe(2,1)
-plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin")
-plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin")
+plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin", main="Vegetazione 2018")
+plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin", main="Vegetazione 2022")
 # False color vegetazion (NIR/Red/Green)
-plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin")
-plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin")
+plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin", main="Vegetazione 2018")
+plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin", main="Vegetazione 2022")
 # Vegetation false color (NIR/Red Edge/Blue)
-plotRGB(TrRedE_2018, r="B8", g="B5", b="B2", stretch="lin")
-plotRGB(TrRedE_2022, r="B8", g="B5", b="B2", stretch="lin")
+plotRGB(TrRedE_2018, r="B8", g="B5", b="B2", stretch="lin", main="Vegetazione 2018")
+plotRGB(TrRedE_2022, r="B8", g="B5", b="B2", stretch="lin", main="Vegetazione 2022")
 
 dev.off()
 
