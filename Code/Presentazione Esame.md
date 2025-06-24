@@ -1,6 +1,6 @@
 # La vegetazione di Tarvisio
 
-Lo studio preso in esame vuole verificare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, spesso colpito da patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
+Lo studio vuole verificare i cambiamenti e/o perdita di vegetazione nell zona di Tarvisio, territorio situato in Friuli Venezia Giulia, spesso colpito da patologie vegetali quali la processionaria del pino e il bostrico del castagno. 
 Sono stati presi in considerazione due anni nel periodo che si estende dal 01 febbraio al 30 giugno (2018 - 2022). 
 Le immagini scelte sono state prese dal sito "Copernicus Browser" utilizzando InstrumentSentinel-2 MSI: Multispectral Instrument.
 - https://developers.google.com/earth-engine/datasets/catalog/sentinel?hl=it
