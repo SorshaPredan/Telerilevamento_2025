@@ -172,16 +172,16 @@ im.multiframe(2,1)
 plot(dvi2018, col=inferno (100), main="DVI - 2018")
 plot(dvi2022, col=inferno (100), main="DVI - 2022")
 
-# Calculate NDVI: indice di differenza normalizzata delle vegetazioni impiegando i valori delle bande rosse e infrarosse delle immagini.
+# Calcolo NDVI: indice di differenza normalizzata delle vegetazioni impiegando i valori delle bande rosse e infrarosse delle immagini.
 # Viene calcolata con la formula NDVI = (nir-red/nir+red) che mi permette di andare a confrontare i valori tra immagini che hanno una risoluzione radiometrica diversa
 # Interpretazione dati relativi a NDVI: valori alti, vicini a +1 = vegetazione densa e sana; valori vicini 0= vegetazione scarsa, neve/ghiaccio o suolo nudo; valori bassi vicini a -1 = superfici non coperte da vegetazione o urbanizzate come costruzioni o strade.
-# Anno 2018
+# Calculate ndvi for 2018
 ndvi2018 = (Tr2018_nir - Tr2018_br) / (Tr2018_nir + Tr2018_br)
 ndvi2018
 # ndvi2018 = dvi2018 / (Tr2018_nir + Tr2018_br)
 # I risultati del 2018 sono: min -0.45, max 0.91
 plot(ndvi2018)
-# Anno 2022
+# Calculate ndvi for 2022
 ndvi2022 = (Tr2022_nir - Tr2022_br) / (Tr2022_nir + Tr2022_br)
 ndvi2022
 # ndvi2022 = dvi2022 / (Tr2022_nir + Tr2022_br)
@@ -201,16 +201,16 @@ hist(ndvi2022, main="Histogram NDVI 2022", col="darkred")
 
 dev.off()
 
-# Calculate NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
+# Calcolo NDRE (Normalized Difference Red Edge) si basa sulla differenza tra le riflettanze nelle bande del Red Edge e del vicino infrarosso (NIR). 
 # L'NDRE aiuta a individuare stress o alterazioni fisiologiche nelle piante prima che siano visibili ad occhio nudo, permettendo interventi più tempestivi. 
 # È particolarmente utile in ambienti agricoli o forestali dove la diagnosi precoce è fondamentale per la gestione delle malattie.
 # Interpretazione dati relativi a NDRE: valori elevati (vicino a +1) indicano una buona presenza di clorofilla e, quindi, una buona salute vegetale; mentre valori bassi (vicino a 0 o negativi) possono indicare stress, carenze di nutrienti, malattie o altre condizioni che riducono la quantità di clorofilla.
-# Anno 2018
+# Calculate ndre for 2018
 ndre2018 = (Tr2018_bnir - Tr2018_bRE) / (Tr2018_bnir + Tr2018_bRE)
 ndre2018
 # I risultati del 2018 sono: min -0.57, max 0.72
 plot(ndre2018)
-# Anno 2022
+# Calculate ndre for 2022
 ndre2022 = (Tr2022_bnir - Tr2022_bRE) / (Tr2022_bnir + Tr2022_bRE)
 ndre2022
 # I risultati del 2022 sono: min -0.50, max 0.86
