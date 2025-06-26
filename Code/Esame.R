@@ -235,14 +235,6 @@ im.multiframe(2,1)
 plot(diff_ndvi, col=inferno (100), main="NDVI Difference (2022 - 2018)")
 plot(diff_ndre, col=inferno (100), main="NDRE Difference (2022 - 2018)")
 
-# Classificazione delle differenze per evidenziare cambiamenti notevoli di vegetazione
-ndvi_change_class <- classify(diff_ndvi, rbind(
- c(-Inf, -0.2, 1),   # forte diminuzione
- c(-0.2, 0.2, 2),    # cambiamento minimo 
- c(0.2, Inf, 3)      # forte aumento
-))
-plot(ndvi_change_class, col=c("red", "yellow", "blue"), main="Classificazione cambiamento NDVI")
-
 ### CLASSIFICAZIONE DELLE IMMAGINI E CALCOLO DELLA FREQUENZA
 # Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
 # La funzione impiegata fa parte del pacchetto "imageRy".
