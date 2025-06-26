@@ -142,12 +142,13 @@ pairs(Tarvisio2022)
 
 # Utilizzo pacchetto viridis
 # Anno 2018
+im.multiframe(3,1)
 plot(Tr2018_nir)
-plot(Tr2018_nir, col=viridis (100))
+plot(Tr2018_nir, col=cividis (100))
 plot(Tr2018_nir, col=inferno (100))
 # Anno 2022
 plot(Tr2022_nir)
-plot(Tr2022_nir, col=viridis (100))
+plot(Tr2022_nir, col=cividis (100))
 plot(Tr2022_nir, col=inferno (100))
 
 dev.off()
@@ -185,7 +186,7 @@ plot(ndvi2018)
 ndvi2022 = (Tr2022_nir - Tr2022_br) / (Tr2022_nir + Tr2022_br)
 ndvi2022
 # ndvi2022 = dvi2022 / (Tr2022_nir + Tr2022_br)
-# i risultati del 2022 sono: min -0.42, max 0.99
+# I risultati del 2022 sono: min -0.42, max 0.99
 plot(ndvi2022)
 
 summary(values(ndvi2018))
@@ -193,11 +194,6 @@ summary(values(ndvi2022))
 im.multiframe(2,1)
 plot(ndvi2018, col=inferno (100), main="NDVI - 2018")
 plot(ndvi2022, col=inferno (100), main="NDVI - 2022")
-dev.off()
-
-# Visualizzazione statistica attraverso un istogramma
-hist(ndvi2018, main="Histogram NDVI 2018", col="forestgreen")
-hist(ndvi2022, main="Histogram NDVI 2022", col="darkred")
 
 dev.off()
 
@@ -221,11 +217,6 @@ summary(values(ndre2022))
 im.multiframe(2,1)
 plot(ndre2018, col=inferno (100), main="NDRE - 2018")
 plot(ndre2022, col=inferno (100), main="NDRE - 2022")
-dev.of()
-
-# Visualizzazione statistica attraverso un istogramma
-hist(ndre2018, main="Histogram NDRE 2018", col="forestgreen")
-hist(ndre2022, main="Histogram NDRE 2022", col="darkred")
 
 dev.off() 
 
@@ -233,9 +224,11 @@ dev.off()
 # Valori positivi stanno ad indicare una maggiore presenza di vegetazione
 diff_ndvi <- ndvi2022 - ndvi2018
 diff_ndvi
+# I risultati sono: min -0.85, max 0.79
 plot(diff_ndvi, col=inferno (100), main="NDVI Difference (2022 - 2018)")
 diff_ndre <- ndre2022 - ndre2018
 diff_ndre
+# I risultati sono: min -0.79, max 0.80
 plot(diff_ndre, col=inferno (100), main="NDRE Difference (2022 - 2018)")
 
 im.multiframe(2,1)
