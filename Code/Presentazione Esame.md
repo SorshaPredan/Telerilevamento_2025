@@ -28,7 +28,7 @@ setwd("C:/Users/user/Desktop/Telerilevamento/Immagini")
 
 ### True Color Vegetation (RGB naturale)
 ![image](https://github.com/user-attachments/assets/ede98edf-3816-4b24-b862-148559230dbc)
-### False color vegetazion (NIR/Red/Green)
+### False color vegetation (NIR/Red/Green)
 ![image](https://github.com/user-attachments/assets/def9c72b-b7e0-4960-ab19-f3e01c894efc)
 ### False color vegetation (NIR/Red Edge/Blue)
 ![image](https://github.com/user-attachments/assets/19aa9a6d-758d-4713-bf76-fa503ce98d82)
