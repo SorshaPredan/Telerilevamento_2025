@@ -7,7 +7,6 @@
 # https://code.earthengine.google.com/?scriptPath=Examples%3ADatasets%2FCOPERNICUS%2FCOPERNICUS_S2_SR_HARMONIZED&hl=it
 # Il codice è stato scritto impiegando i seguenti pacchetti per analisi geospaziale e visualizzazione raster
 library(terra)       # Gestione e analisi raster
-library(raster)      # Compatibilità con vecchi script raster
 library(ggplot2)     # Grafici e visualizzazioni
 library(patchwork)   # Composizione di più grafici
 library(viridis)     # Palette di colori accessibili         
@@ -22,7 +21,7 @@ library(imageRy)     #Pacchetto in R con specializzazione per analisi geospazial
   # - False Color: con le bande B8, B5 e B2 (NIR, Red Edge, Blue).
 # L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b4, b8 (blue, red, green, nir).
 # L'obiettivo è costruire un’unica immagine con 4 bande: b2, b3, b5, b8 (blue, red edge, green, nir).
-# Exporting data
+# Importing data
 # \ change direction
 # Windowds users: C://comp/Downloads
 # setwd("C://nome/Downloads")
@@ -69,10 +68,10 @@ TrRedE_2022
 im.multiframe(2,1)
 plotRGB(Tr_2018, r=3, g=2, b=1, stretch="lin", main="Vegetazione 2018")
 plotRGB(Tr_2022, r=3, g=2, b=1, stretch="lin", main="Vegetazione 2022")
-# False color vegetazion (NIR/Red/Green)
+# False color vegetation (NIR/Red/Green)
 plotRGB(TrNIR_2018, r="B8", g="B4", b="B3", stretch="lin", main="Vegetazione 2018")
 plotRGB(TrNIR_2022, r="B8", g="B4", b="B3", stretch="lin", main="Vegetazione 2022")
-# Vegetation false color (NIR/Red Edge/Blue)
+# False color vegetation (NIR/Red Edge/Blue)
 plotRGB(TrRedE_2018, r="B8", g="B5", b="B2", stretch="lin", main="Vegetazione 2018")
 plotRGB(TrRedE_2022, r="B8", g="B5", b="B2", stretch="lin", main="Vegetazione 2022")
 
