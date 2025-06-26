@@ -47,6 +47,7 @@
 \begin{frame}
 {\Large\textbf{Importazione Immagini}}
 Le immagini selezionate coprono la zona di Malborghetto, Camporosso in Valcanale e Tarvisio, aree montuose maggiormente colpite da stress ambientali.
+
 \vspace{+1cm}
 Exporting data
 \ change direction
@@ -166,8 +167,9 @@ I risultati del 2022 sono: min -0.50, max 0.86
 {\Large\textbf{Classificazione delle immagini e calcolo della frequenza}}
 \vspace{-1cm}
 Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
-
-
+\begin{columns}
+    \column{0.5\textwidth}
+    
 \vspace{+0.5cm}
 \raggedright\textbf{Percentages Anno 2018}
 \begin{itemize} 
@@ -181,6 +183,9 @@ Si classificano le immagini impiegando la funzione "im.classify()" e successivam
 \item forest = 81
 \item glacier = 2.3
 \end{itemize} 
+\column{0.5\textwidth}
+    \includegraphics[width=.9\linewidth]{Frequenza.png}
+\end{columns}
 \end{frame}
 
 \section{Ggplot e Dataframe}
@@ -206,4 +211,4 @@ I valori degli indici di vegetazione DVI, NDVI e NDRE analizzati per i due anni 
 Nonostante la presenza di potenziali patologie vegetali, l'analisi studio indica che tra il 2018 e il 2022 si è verificato un lieve miglioramento della vegetazione sia in termini di quantità (copertura) che qualità (salute fisiologica).
 \end{frame}
 
-\end{document}
+\end{document} 
