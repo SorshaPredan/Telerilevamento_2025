@@ -250,6 +250,7 @@ plot(ndvi_change_class, col=c("red", "yellow", "blue"), main="Classificazione ca
 una pianta o una porzione di suolo, per es.).
 # La funzione prende i pixel dell'immagine in maniera randomica e pertanto i colori dei cluster delle classificazioni possono risultare diversi a ogni visualizzazione. 
 im.classify
+im.multiframe(2,1)
 # Anno 2018
 Tarvisio_2018 <-im.classify(Tarvisio2018, num_clusters=3)
 Tarvisio_2018
