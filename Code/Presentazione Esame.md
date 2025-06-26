@@ -8,7 +8,6 @@ Le immagini scelte sono state prese dal sito "Copernicus Browser" utilizzando In
 
 ``` r
 library(terra)       # Gestione e analisi raster
-library(raster)      # Compatibilità con vecchi script raster
 library(ggplot2)     # Grafici e visualizzazioni
 library(patchwork)   # Composizione di più grafici
 library(viridis)     # Palette di colori accessibili         
@@ -18,7 +17,7 @@ library(imageRy)     # Pacchetto in R con specializzazione per analisi geospazia
 ## Importazione Immagini
 Le immagini selezionate coprono la zona di Malborghetto, Camporosso in Valcanale e Tarvisio, aree montuose maggiormente colpite da stress ambientali.
 ``` r
-Exporting data
+Importing data
 \ change direction
 Windowds users: C://comp/Downloads
 setwd("C://nome/Downloads")
