@@ -103,6 +103,7 @@ I risultati del 2022 sono: min -0.50, max 0.86
 ## Classificazione delle immagini e calcolo della frequenza
 Si classificano le immagini impiegando la funzione "im.classify()" e successivamente si svolge il calcolo della relativa frequenza, proporzione e percentuale del numero dei pixel.
 NOTA: la funzione prende i pixel dell'immagine in maniera randomica e pertanto i colori dei cluster delle classificazioni possono risultare diversi a ogni visualizzazione.
+![image](https://github.com/user-attachments/assets/36a1d81a-daf0-486c-b865-49929cf4f0a0)
 ``` r
 im.classify
 # Anno 2018
